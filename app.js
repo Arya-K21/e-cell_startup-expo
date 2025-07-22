@@ -6,7 +6,7 @@ menu.onclick = () => {
   navbar.classList.toggle("open");
 };
 
-Shery.mouseFollower();
+// Shery.mouseFollower();
 Shery.makeMagnet(".logo img", {
   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
 });
@@ -17,8 +17,10 @@ function handleScrollAndResize() {
   const navRight = document.querySelector(".nav-right");
   const logo = document.querySelector(".logo");
 
-  if (window.innerWidth > 768) { // Only apply if screen width is greater than 768px
-    if (window.scrollY > 100) { // Adjust this value to suit your needs
+  if (window.innerWidth > 768) {
+    // Only apply if screen width is greater than 768px
+    if (window.scrollY > 100) {
+      // Adjust this value to suit your needs
       nav.style.backgroundColor = "transparent";
       navbar.style.background = "linear-gradient(247deg,  rgb(0, 0, 0) 100%)";
       navbar.style.borderRadius = "20px";
@@ -49,7 +51,6 @@ window.addEventListener("resize", handleScrollAndResize);
 
 // Initial check to apply the correct styles on page load
 handleScrollAndResize();
-
 
 // OnPageLoad Animation
 function page_loadAnim() {
@@ -91,18 +92,15 @@ function heroAnimation() {
     },
   });
   setTimeout(() => {
-  gsap.to("#leftCurtain", {
-    x: -700,
-    duration: 3,
-  });
-  gsap.to("#rightCurtain", {
-    x: 750,
-    duration: 3,
-  });
-}, 2000); // 5 seconds after script is run
-
-
-;
+    gsap.to("#leftCurtain", {
+      x: -700,
+      duration: 3,
+    });
+    gsap.to("#rightCurtain", {
+      x: 750,
+      duration: 3,
+    });
+  }, 2000); // 5 seconds after script is run
 
   gsap.to("#heroText", {
     y: 500,
@@ -115,18 +113,17 @@ heroAnimation();
 
 // Slider
 function threedslider() {
-
-  gsap.from('.carousel',{
-    opacity:0,
-    y:50,
-    scrollTrigger:{
-    trigger:'.carousel',
-    scroller: 'body',
-    start:'top 50%',
-    end:'top -10%',
-    scrub:2,
-    }
-  })
+  gsap.from(".carousel", {
+    opacity: 0,
+    y: 50,
+    scrollTrigger: {
+      trigger: ".carousel",
+      scroller: "body",
+      start: "top 50%",
+      end: "top -10%",
+      scrub: 2,
+    },
+  });
 
   let nextButton = document.getElementById("next");
   let prevButton = document.getElementById("prev");
@@ -174,8 +171,6 @@ function threedslider() {
 threedslider();
 
 function offerAnim() {
- 
-
   gsap.from(".fheading", {
     opacity: 0,
     duration: 0.4,
@@ -263,3 +258,25 @@ function VideoAnimation() {
   });
 }
 VideoAnimation();
+window.addEventListener("load", () => {
+  const introAnimation = document.getElementById("introAnimation");
+  const surpriseBox = document.getElementById("surpriseBox");
+  const mainContent = document.getElementById("mainContent");
+
+  setTimeout(() => {
+    surpriseBox.classList.add("burst");
+
+    setTimeout(() => {
+      introAnimation.style.opacity = "0";
+
+      // Show main content
+      mainContent.style.opacity = "1";
+      mainContent.style.visibility = "visible";
+
+      setTimeout(() => {
+        introAnimation.remove();
+      }, 1500); // Match fade out
+    }, 900); // after burst
+  }, 1000); // initial delay
+});
+
