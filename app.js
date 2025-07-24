@@ -113,17 +113,18 @@ heroAnimation();
 
 // Slider
 function threedslider() {
-  gsap.from(".carousel", {
-    opacity: 0,
-    y: 50,
-    scrollTrigger: {
-      trigger: ".carousel",
-      scroller: "body",
-      start: "top 50%",
-      end: "top -10%",
-      scrub: 2,
-    },
-  });
+
+  gsap.from('.carousel',{
+    opacity:0,
+    y:50,
+    scrollTrigger:{
+    trigger:'.carousel',
+    scroller: 'body',
+    start:'top 50%',
+    end:'top -10%',
+    scrub:2,
+    }
+  })
 
   let nextButton = document.getElementById("next");
   let prevButton = document.getElementById("prev");

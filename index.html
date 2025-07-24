@@ -52,8 +52,9 @@
     <!----------------------------------------- Header Section ----------------------------------------------------->
     <!-- <main class="flex-grow flex items-center justify-center text-center px-4 py-16 relative z-10"> -->
     <!-- <main class="flex-grow flex items-center justify-center text-center px-4 pt-32 pb-20 relative z-10"> -->
+       <div class="Bg-image"> <img src="./img/herobg1.jpg" id="heroBg"></div>
     <main class="min-h-screen flex items-center justify-center text-center px-4 relative z-10">
-        <div class="Bg-image"><img src="./img/herobg1.jpg" id="heroBg"></div>
+
         <div class="max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-up">
                 <span class="gradient-text block">Startup</span>
@@ -262,9 +263,9 @@
             </div>
         </div>
         <div class="arrows">
-            <button id="prev">
-                < </button>
-                    <button id="next">></button>
+                <button id="prev">&lt;</button> <!-- &lt; = < -->
+                <button id="next">&gt;</button> <!-- &gt; = > -->
+
         </div>
     </div>
 
@@ -480,7 +481,7 @@
     </section>
     <!------------------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------- Previous Partners ---------------------------------------------------->
-    <section class="partners">
+    <!-- <section class="partners">
         <h1 style="text-align: center; font-size: 2.5em;font-weight: 600;margin-bottom: 3.7vw;">Previous Partners</h1>
         <div id="moving-div">
             <div id="blurleft"></div>
@@ -500,7 +501,44 @@
             </div>
             <div id="blurright"></div>
         </div>
-    </section><br><br><br>
+    </section><br><br><br> -->
+
+    <section class="partners" style="overflow: hidden; width: 100%; position: relative; background: black;">
+        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw; color: white;">Previous Partners</h1>
+  
+    <div id="moving-div" style="display: flex; position: relative; overflow: hidden; width: 100%;">
+    
+    <div id="blurleft" style="position: absolute; left: 0; width: 80px; height: 100%; background: linear-gradient(to right, black, transparent); z-index: 2;"></div>
+    
+    <div class="move" style="display: flex; animation: slide 20s linear infinite;">
+      <img src="./img/microsoft-logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/Decathlon-Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/Artic_Fox_Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/campusTimes_logo.jpeg" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/iMOCH_logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+    </div>
+    
+    <div class="move" style="display: flex; animation: slide 20s linear infinite;">
+      <img src="./img/microsoft-logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/Decathlon-Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/Artic_Fox_Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/campusTimes_logo.jpeg" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+      <img src="./img/iMOCH_logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
+    </div>
+    
+    <div id="blurright" style="position: absolute; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, black, transparent); z-index: 2;"></div>
+  
+    </div>
+    </section>
+
+<!-- Add this to your HTML <style> tag or external CSS -->
+    <style>
+        @keyframes slide {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
+
     <!------------------------------------------------------------------------------------------------------------>
     <!------------------------------------------------- Video ---------------------------------------------------->
     <div id="videoSection">

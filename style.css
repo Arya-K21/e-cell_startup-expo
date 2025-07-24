@@ -292,7 +292,7 @@ nav {
   width: 50%;
 }
 
-.Bg-image img{
+.Bg-image img {
   position: absolute;
   top: 0;
   left: 0;
@@ -925,15 +925,21 @@ nav {
   display: none;
 }
 
+.carousel .list .item {
+  transition: opacity 0.5s ease-in-out, z-index 0.3s ease-in-out;
+}
+
 .arrows {
   position: absolute;
-  bottom: 50px;
-  width: 1140px;
-  max-width: 90%;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
+  padding: 250px;
+  z-index: 10;
 }
 
 #prev,
