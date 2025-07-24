@@ -2,34 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StartupExpo 2025</title>
-    <link rel="icon" href="./img/startup_expo_logo.png" type="image/png">
-    <!-- Boostrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
-    <link rel="stylesheet" href="./style.css">
-    <!-- Landing Page -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartupExpo 2025</title>
+  <link rel="icon" href="./img/startup_expo_logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    #cosmicCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
-    
-    <!-- Intro Animation Container -->
-        <div id="introAnimation">
-            <div id="surpriseBox" class="rounded-xl"></div>
-            <canvas id="cosmicCanvas"></canvas>
-        </div>
-    
+  <div id="introAnimation">
+    <div id="surpriseBox" class="rounded-xl"></div>
+    <canvas id="cosmicCanvas"></canvas>
+  </div>
 
-            <!----------------------------------------- Navigation Bar ---------------------------------------------------->
-    <nav>
+<div id="mainContent" style="opacity: 0; visibility: hidden;">
+
+            <nav>
         <a href="#" class="logo">
             <img src="./img/startupLogo.png" alt=""><span>&nbsp;</span>
         </a>
@@ -48,13 +54,8 @@
             </div>
         </div>
     </nav>
-    <!------------------------------------------------------------------------------------------------------------->
-    <!----------------------------------------- Header Section ----------------------------------------------------->
-    <!-- <main class="flex-grow flex items-center justify-center text-center px-4 py-16 relative z-10"> -->
-    <!-- <main class="flex-grow flex items-center justify-center text-center px-4 pt-32 pb-20 relative z-10"> -->
-       <div class="Bg-image"> <img src="./img/herobg1.jpg" id="heroBg"></div>
+    <div class="Bg-image"> <img src="./img/herobg1.jpg" id="heroBg"></div>
     <main class="min-h-screen flex items-center justify-center text-center px-4 relative z-10">
-
         <div class="max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-up">
                 <span class="gradient-text block">Startup</span>
@@ -70,14 +71,6 @@
             </div>
         </div>
     </main>
-<!-- 
-    <section class="heroSection">
-        
-        <h2 id="heroText" class=" press-start-2p-regular"> </h2>
-        <h3></h3> -->
-        <!-- <img src="./img/leftCurtain.png" id="leftCurtain">
-        <img src="./img/rightCurtain.png" id="rightCurtain"> -->
-    <!-- </section> -->
     <section class="countdownSection">
         <h3>Countdown to Expo</h3>
         <div class="countdown" id="countdown">
@@ -106,8 +99,6 @@
     </div>
 
 
-    <!-------------------------------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Event highlights Corousel ---------------------------------------------------->
     <div class="carousel">
         <div class="list">
             <div class="item">
@@ -118,7 +109,6 @@
                     <div class="des">
                         Discussions amongst professionals and entrepreneurs across diverse sectors
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Panel Discussions</div>
@@ -139,7 +129,6 @@
                     <div class="des">
                         Daily exhibitions featuring cutting-edge products and solutions from participating startups
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Startup Showcases</div>
@@ -160,7 +149,6 @@
                     <div class="des">
                         Experience entrepreneurs personally presenting their startups and stories, broadcast live.
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Roam around Interviews</div>
@@ -182,7 +170,6 @@
                         Witness startups deliver concise and impactful presentations to investors and the audience,
                         showcasing their unique value propositions
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">1Min Pitch Desks</div>
@@ -204,7 +191,6 @@
                         Connect with peers, industry leaders, and potential collaborators in structured networking
                         opportunities designed to foster meaningful connections.
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Networking Sessions</div>
@@ -227,7 +213,6 @@
                         Engage in mentorship sessions where experienced professionals and entrepreneurs provide guidance
                         and support to student projects and aspiring entrepreneurs
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Mentorship Programs</div>
@@ -249,7 +234,6 @@
                         Join hands-on workshops to boost entrepreneurial skills and knowledge, and enjoy quizzes and
                         games to keep the enthusiasm high.
                     </div>
-                    <!-- <button class="seeMore">SEE MORE &#8599</button> -->
                 </div>
                 <div class="detail">
                     <div class="title">Fun and Workshops</div>
@@ -263,18 +247,14 @@
             </div>
         </div>
         <div class="arrows">
-                <button id="prev">&lt;</button> <!-- &lt; = < -->
-                <button id="next">&gt;</button> <!-- &gt; = > -->
-
+                <button id="prev">&lt;</button>
+                <button id="next">&gt;</button>
         </div>
     </div>
 
-    <!-------------------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Offer Section ---------------------------------------------------->
     <section id="aboutSection">
         <div class="about-container">
 
-            <!-- Row 1: Text Left, Image Right -->
             <div class="about-row">
                 <div class="about-box text-box">
                     <h2>About Startup Expo 2025</h2>
@@ -292,7 +272,6 @@
                 </div>
             </div>
 
-            <!-- Row 2: Image Left, Text Right -->
             <div class="about-row">
                 <div class="image-box2">
                     <img src="./img/MITWPU.png" alt="MIT-WPU Campus" />
@@ -408,153 +387,108 @@
             </div>
         </div>
     </div>
-    <!------------------------------------------------------------------------------------------------------------------------>
-    <!------------------------------------------------- Previous Speakers ---------------------------------------------------->
     <section id="speakerSection">
         <h1 style="text-align: center; font-size: 2.5em;font-weight: 600;margin-bottom: 3.7vw; margin-top: 5vh; ">Our
             Speakers</h1>
         <div class="speakerContainer">
-            <!-- <br><br> -->
             <div class="speakerCard">
                 <img src="img\kamlesh4.png" alt="kamlesh ghumare" loading="lazy">
-                <h1>Kamlesh</h1>
-                
+                <h1>Kamlesh Ghumare</h1>
+                <h3>Founder & CEO, TechMojo</h3>
             </div>
-
-
             <div class="speakerCard">
                 <img src="img\bhavna2.png" alt="Bhavna bhatnagar" loading="lazy">
                 <h1>Bhavna Bhatnagar</h1>
+                <h3>Founder & CEO, BrandWaale</h3>
             </div>
-
             <div class="speakerCard">
                 <img src="./img/dd.webp" alt="Devendra Deshmukh" loading="lazy">
                 <h1>Devendra Deshmukh</h1>
+                <h3>CEO, Venkteshwara Hatcheries</h3>
             </div>
-
             <div class="speakerCard">
                 <img src="./img/dembla.jpg" alt="Rajesh Dembla" loading="lazy">
                 <h1>Rajesh Dembla</h1>
+                <h3>Co-Founder & CEO, Cube Wealth</h3>
             </div>
-
-
             <div class="speakerCard">
                 <img src="./img/goyal.jpeg" alt="Rohit Goyal" loading="lazy">
                 <h1>Rohit Goyal</h1>
+                <h3>Co-Founder & CEO, GoMechanic</h3>
             </div>
-
             <div class="speakerCard">
                 <img src="./img/adik.jpg" alt="Pravin adik" loading="lazy">
                 <h1>Pravin Adik</h1>
+                <h3>Angel Investor & Startup Mentor</h3>
             </div>
             <div class="speakerCard">
                 <img src="./img/thite.jpeg" alt="Yogesh thite" loading="lazy">
                 <h1>Yogesh Thite</h1>
+                <h3>Founder, TechYogi Solutions</h3>
             </div>
             <div class="speakerCard">
                 <img src="img\raunak.png" alt="Raunak singhvi" loading="lazy">
                 <h1>Raunak Singhvi</h1>
+                <h3>Co-Founder, MyCaptain</h3>
             </div>
             <div class="speakerCard">
                 <img src="img\parimal.png" alt="Parimal kale" loading="lazy">
-                <h1>Parimal Kalei</h1>
+                <h1>Parimal Kale</h1>
+                <h3>Founder & CEO, ConnectUp</h3>
             </div>
             <div class="speakerCard">
                 <img src="img\default.jpeg" alt="Nikhil Gupta" loading="lazy">
                 <h1>Nikhil Gupta</h1>
-
+                <h3>VP of Engineering, Flipkart</h3>
             </div>
             <div class="speakerCard">
                 <img src="img\defaultFemale.png" alt="Dr. Kavita rao" loading="lazy">
                 <h1>Dr. Kavita Rao</h1>
+                <h3>Research Scientist, IBM</h3>
             </div>
             <div class="speakerCard">
-                <img src="img\default.jpeg" alt="prashan iyer" loading="lazy">
+                <img src="img\default.jpeg" alt="Mangesh Natha Shinde" loading="lazy">
                 <h1>Mangesh Natha Shinde</h1>
-
+                <h3>CEO, Shinde Group</h3>
             </div>
-
-
-
         </div>
         <br><br><br><br>
     </section>
-    <!------------------------------------------------------------------------------------------------------------------------>
-    <!------------------------------------------------- Previous Partners ---------------------------------------------------->
-    <!-- <section class="partners">
-        <h1 style="text-align: center; font-size: 2.5em;font-weight: 600;margin-bottom: 3.7vw;">Previous Partners</h1>
+    <section class="partners" style="overflow: hidden; width: 100%; position: relative; background: black;">
+        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw; color: white;">Previous Partners</h1>
         <div id="moving-div">
             <div id="blurleft"></div>
             <div class="move">
-                <img src="./img/microsoft-logo.png" alt="">
-                <img src="./img/Decathlon-Logo.png" alt="">
-                <img src="./img/Artic_Fox_Logo.png" alt="">
-                <img src="./img/campusTimes_logo.jpeg" alt="">
-                <img src="./img/iMOCH_logo.png" alt="">
+                <img src="./img/microsoft-logo.png" alt="Microsoft">
+                <img src="./img/Decathlon-Logo.png" alt="Decathlon">
+                <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox">
+                <img src="./img/campusTimes_logo.jpeg" alt="Campus Times">
+                <img src="./img/iMOCH_logo.png" alt="iMoch">
             </div>
             <div class="move">
-                <img src="./img/microsoft-logo.png" alt="">
-                <img src="./img/Decathlon-Logo.png" alt="">
-                <img src="./img/Artic_Fox_Logo.png" alt="">
-                <img src="./img/campusTimes_logo.jpeg" alt="">
-                <img src="./img/iMOCH_logo.png" alt="">
+                <img src="./img/microsoft-logo.png" alt="Microsoft">
+                <img src="./img/Decathlon-Logo.png" alt="Decathlon">
+                <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox">
+                <img src="./img/campusTimes_logo.jpeg" alt="Campus Times">
+                <img src="./img/iMOCH_logo.png" alt="iMoch">
             </div>
             <div id="blurright"></div>
         </div>
-    </section><br><br><br> -->
-
-    <section class="partners" style="overflow: hidden; width: 100%; position: relative; background: black;">
-        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw; color: white;">Previous Partners</h1>
-  
-    <div id="moving-div" style="display: flex; position: relative; overflow: hidden; width: 100%;">
-    
-    <div id="blurleft" style="position: absolute; left: 0; width: 80px; height: 100%; background: linear-gradient(to right, black, transparent); z-index: 2;"></div>
-    
-    <div class="move" style="display: flex; animation: slide 20s linear infinite;">
-      <img src="./img/microsoft-logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/Decathlon-Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/Artic_Fox_Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/campusTimes_logo.jpeg" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/iMOCH_logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-    </div>
-    
-    <div class="move" style="display: flex; animation: slide 20s linear infinite;">
-      <img src="./img/microsoft-logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/Decathlon-Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/Artic_Fox_Logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/campusTimes_logo.jpeg" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-      <img src="./img/iMOCH_logo.png" style="height: 60px; width: auto; margin: 0 30px; object-fit: contain;">
-    </div>
-    
-    <div id="blurright" style="position: absolute; right: 0; width: 80px; height: 100%; background: linear-gradient(to left, black, transparent); z-index: 2;"></div>
-  
-    </div>
     </section>
 
-<!-- Add this to your HTML <style> tag or external CSS -->
-    <style>
-        @keyframes slide {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-    }
-</style>
-
-    <!------------------------------------------------------------------------------------------------------------>
-    <!------------------------------------------------- Video ---------------------------------------------------->
     <div id="videoSection">
         <video src="./img/ecell reel.mp4" autoplay muted loop playsinline></video>
         <div class="videoSection-center">
+            <div class="playIcon">
+                <i class="ri-play-fill"></i> </div>
         </div>
     </div>
-    <!----------------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Faq section ---------------------------------------------------->
     <section id="FAQ"> <br> <br>
         <h1>FAQ</h1>
         <div>
             <details>
                 <summary>
-                    <i class="ri-arrow-down-s-line" id="show"></i>
-                    <h1>Q) What happens in the event??</h1>
+                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) What happens in the event??</h1>
                 </summary>
 
                 <div class="FAQ-answer">
@@ -571,29 +505,19 @@
         <div>
             <details>
                 <summary>
-                    <i class="ri-arrow-down-s-line" id="show"></i>
-                    <h1>Q) When is the Event for this year?? </h1>
+                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) When is the Event for this year?? </h1>
                 </summary>
 
                 <div class="FAQ-answer">
                     <div class="FAQ_hoverEffect">
                     </div>
-                    <p>The Startup Expo 2025 event is scheduled to take place from August 20th to August 24th.
-
-
-
-
-
-
-                        .</p>
-                </div>
+                    <p>The Startup Expo 2025 event is scheduled to take place from August 11th to August 14th.</p> </div>
             </details>
         </div>
         <div>
             <details>
                 <summary>
-                    <i class="ri-arrow-down-s-line" id="show"></i>
-                    <h1>Q) What do the attendees get??</h1>
+                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) What do the attendees get??</h1>
                 </summary>
 
                 <div class="FAQ-answer">
@@ -603,21 +527,14 @@
                         industry experts, exposure to innovative products and services, potential investment
                         opportunities, and the chance to participate in workshops, panel discussions, and pitch
                         sessions.
-
-
-
-
-
-
-                        .</p>
+                    </p>
                 </div>
             </details>
         </div>
         <div>
             <details>
                 <summary>
-                    <i class="ri-arrow-down-s-line" id="show"></i>
-                    <h1>Q) Is there any Registration Fees??</h1>
+                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) Is there any Registration Fees??</h1>
                 </summary>
 
                 <div class="FAQ-answer">
@@ -635,8 +552,6 @@
         </div>
 
     </section>
-    <!----------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Form ---------------------------------------------------->
     <section class="form-container" id="contact">
         <div class="form-row">
 
@@ -651,8 +566,7 @@
             <div class="formCol rightForm">
                 <form action="https://formspree.io/f/xyzgdygk" method="POST" class="messageForm">
                     <div class="inputGroup halfWidth">
-                        <input class="name" type="text" name="" required="required">
-                        <label>Your Name</label>
+                        <input class="name" type="text" name="name" required="required"> <label>Your Name</label>
                     </div>
 
                     <div class="inputGroup halfWidth">
@@ -661,29 +575,24 @@
                     </div>
 
                     <div class="inputGroup fullWidth">
-                        <input type="name" name="subject" required="required">
-                        <label>Subject</label>
+                        <input type="text" name="subject" required="required"> <label>Subject</label>
                     </div>
 
                     <div class="inputGroup fullWidth">
-                        <textarea required="required"></textarea>
-                        <label>Say Something</label>
+                        <textarea name="message" required="required"></textarea> <label>Say Something</label>
                     </div>
 
                     <div class="inputGroup fullWidth">
-                        <button>Send Message</button>
-                    </div>
+                        <button type="submit">Send Message</button> </div>
                 </form>
             </div>
 
         </div>
     </section>
 
-    <!-------------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Footers ---------------------------------------------------->
     <footer>
         <div class="footer-upper">
-            <img src="./img/ECELL-LOGO.png" alt="">
+            <img src="./img/ECELL-LOGO.png" alt="E-Cell Logo">
             <div class="footer-part">
                 <h3>Location<div class="underline"><span></span></div>
                 </h3>
@@ -717,7 +626,7 @@
         </div>
         <p>E-Cell StartupExpo © 2025 - All Rights Reserved </p><br>
     </footer>
-    <!----------------------------------------- Scripts ---------------------------------------------------->
+</div>
     <script>
         document.querySelectorAll("details").forEach((detail) => {
             const summary = detail.querySelector("summary");
@@ -740,13 +649,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
-    <script src="./app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>    
+    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script> <script src="./app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        
         let scene, camera, renderer, stars, starGeo;
         let animationFrameId; // To store the requestAnimationFrame ID
 
@@ -781,7 +686,8 @@
         introAnimation.style.opacity = "0";
 
         // Reveal main content
-        mainContent.classList.add("visible");
+        mainContent.style.opacity = "1"; // Directly set opacity for visibility
+        mainContent.style.visibility = "visible";
 
         // Remove intro animation container after it fades out
         setTimeout(() => {
@@ -928,7 +834,7 @@
         // Parallax effect for nexus core
         document.addEventListener("mousemove", (e) => {
         // Only apply if main content is visible
-        if (mainContent.classList.contains("visible")) {
+        if (mainContent.style.visibility === "visible") { // Check visibility
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
             const mouseX = e.clientX;
@@ -942,17 +848,15 @@
         });
 
         document.addEventListener("mouseleave", () => {
-        if (mainContent.classList.contains("visible")) {
+        if (mainContent.style.visibility === "visible") { // Check visibility
             nexusCore.style.transform = `translate(0px, 0px) scale(1)`;
         }
         });
 
         // --- Initial Load ---
         window.onload = function () {
-        // Start the intro animation sequence
-        startIntroAnimation();
-        // Set up scroll animations after a delay to ensure main content is ready
-        setTimeout(setupScrollAnimations, 2000); // Adjust delay as needed
+            startIntroAnimation();
+            // No need for setTimeout here, setupScrollAnimations will be called after intro animation finishes
         };
 
     </script>
@@ -971,6 +875,35 @@
             stagger: 0.2,
         });
     </script>
+    <script>
+        const detailsElements = document.querySelectorAll("details");
+
+        detailsElements.forEach((detail) => {
+            detail.addEventListener("toggle", function () {
+                // Rotate icon on toggle
+                const icon = this.querySelector("i.icon");
+                if (icon) { // Check if icon exists
+                    if (this.open) {
+                        icon.style.transform = "rotate(180deg)";
+                    } else {
+                        icon.style.transform = "rotate(0deg)";
+                    }
+                }
+
+                // Close other open details
+                detailsElements.forEach((other) => {
+                    if (other !== this && other.open) {
+                        other.open = false;
+                        const otherIcon = other.querySelector("i.icon");
+                        if (otherIcon) { // Check if icon exists for other details
+                            otherIcon.style.transform = "rotate(0deg)";
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         const countdownDate = new Date("August 11, 2025 00:00:00").getTime();
 

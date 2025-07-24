@@ -3,10 +3,10 @@ let navbar = document.querySelector(".navbar");
 
 menu.onclick = () => {
   menu.classList.toggle("bx-x");
-  navbar.classList.toggle("open");
+  navbar.classList.toggle("active"); // Changed from 'open' to 'active' to match style.css
 };
 
-// Shery.mouseFollower();
+// Shery.mouseFollower(); // Uncomment if you want mouse follower effect
 Shery.makeMagnet(".logo img", {
   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
 });
@@ -17,18 +17,16 @@ function handleScrollAndResize() {
   const navRight = document.querySelector(".nav-right");
   const logo = document.querySelector(".logo");
 
-  if (window.innerWidth > 768) {
-    // Only apply if screen width is greater than 768px
+  if (window.innerWidth > 992) { // Adjusted breakpoint to match responsive navbar in style.css
     if (window.scrollY > 100) {
-      // Adjust this value to suit your needs
-      nav.style.backgroundColor = "transparent";
+      nav.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Slightly opaque background for nav
       navbar.style.background = "linear-gradient(247deg,  rgb(0, 0, 0) 100%)";
       navbar.style.borderRadius = "20px";
       navbar.style.padding = "15px 5px";
       navRight.style.opacity = "0";
       logo.style.opacity = "0";
     } else {
-      nav.style.backgroundColor = "black";
+      nav.style.backgroundColor = "transparent"; // Keep transparent when at top
       navbar.style.background = "transparent";
       navbar.style.borderRadius = "0";
       navbar.style.padding = "0";
@@ -36,10 +34,11 @@ function handleScrollAndResize() {
       logo.style.opacity = "1";
     }
   } else {
-    // Reset styles for smaller screens
-    nav.style.backgroundColor = "black";
+    // Reset styles for smaller screens (mobile)
+    nav.style.backgroundColor = "black"; // Ensure solid background for mobile nav
+    navbar.style.background = "rgba(0, 0, 0, 0.98)"; // Ensure mobile nav has background
     navbar.style.borderRadius = "0";
-    navbar.style.padding = "0";
+    navbar.style.padding = "1rem 0"; // Match mobile nav padding
     navRight.style.opacity = "1";
     logo.style.opacity = "1";
   }
@@ -71,26 +70,33 @@ function page_loadAnim() {
     "navAnim"
   );
 
-  tl.from(
-    "#heroText",
-    {
-      duration: 0.5,
-      opacity: 0,
-      y: 35,
-    },
-    "navAnim"
-  );
+  // Removed #heroText animation here as it's now handled by Tailwind's animate-fade-in-up
+  // tl.from(
+  //   "#heroText",
+  //   {
+  //     duration: 0.5,
+  //     opacity: 0,
+  //     y: 35,
+  //   },
+  //   "navAnim"
+  // );
 }
-page_loadAnim();
+// page_loadAnim(); // This will be called after the intro animation finishes
 
-// Header Animation
+// Header Animation (Adjusted for current HTML structure)
 function heroAnimation() {
   gsap.to("#heroBg", {
-    scale: 2.3,
+    scale: 1.2, // Adjusted scale for better effect
     scrollTrigger: {
+      trigger: "body", // Trigger from body scroll
+      start: "top top",
+      end: "bottom top", // End at the bottom of the page
       scrub: 2,
     },
   });
+  // #leftCurtain and #rightCurtain are commented out in HTML, so their animations are removed here.
+  // If you re-enable them, uncomment this block:
+  /*
   setTimeout(() => {
     gsap.to("#leftCurtain", {
       x: -700,
@@ -100,38 +106,43 @@ function heroAnimation() {
       x: 750,
       duration: 3,
     });
-  }, 2000); // 5 seconds after script is run
-
+  }, 2000);
+  */
+  // #heroText animation is handled by Tailwind classes in HTML now.
+  /*
   gsap.to("#heroText", {
-    y: 500,
+    y: 500, // Adjusted Y translation for effect
     scrollTrigger: {
+      trigger: "main", // Trigger from the main hero section
+      start: "top top",
+      end: "bottom top",
       scrub: 2,
     },
   });
+  */
 }
-heroAnimation();
+heroAnimation(); // Call heroAnimation on load
 
 // Slider
 function threedslider() {
-
-  gsap.from('.carousel',{
-    opacity:0,
-    y:50,
-    scrollTrigger:{
-    trigger:'.carousel',
-    scroller: 'body',
-    start:'top 50%',
-    end:'top -10%',
-    scrub:2,
+  gsap.from('.carousel', {
+    opacity: 0,
+    y: 50,
+    scrollTrigger: {
+      trigger: '.carousel',
+      scroller: 'body',
+      start: 'top 50%',
+      end: 'top -10%',
+      scrub: 2,
     }
-  })
+  });
 
   let nextButton = document.getElementById("next");
   let prevButton = document.getElementById("prev");
   let carousel = document.querySelector(".carousel");
   let listHTML = document.querySelector(".carousel .list");
-  let seeMoreButtons = document.querySelectorAll(".seeMore");
-  let backButton = document.getElementById("back");
+  // let seeMoreButtons = document.querySelectorAll(".seeMore"); // Removed as seeMore functionality is not desired
+  // let backButton = document.getElementById("back"); // Removed as seeMore functionality is not desired
 
   nextButton.onclick = function () {
     showSlider("next");
@@ -159,6 +170,8 @@ function threedslider() {
       prevButton.style.pointerEvents = "auto";
     }, 2000);
   };
+  // Removed seeMore functionality as it's not implemented or desired in current design
+  /*
   seeMoreButtons.forEach((button) => {
     button.onclick = function () {
       carousel.classList.remove("next", "prev");
@@ -168,6 +181,7 @@ function threedslider() {
   backButton.onclick = function () {
     carousel.classList.remove("showDetail");
   };
+  */
 }
 threedslider();
 
@@ -209,27 +223,48 @@ function offerAnim() {
 offerAnim();
 
 function speakerPartnerSection() {
-  gsap.from("#speakerSection", {
+  gsap.from("#speakerSection h1", { // Animate the heading first
     y: 50,
     opacity: 0,
-    stagger: 0.7,
+    scrollTrigger: {
+      trigger: "#speakerSection",
+      scroller: "body",
+      start: "top 80%",
+      end: "top 50%",
+      scrub: 2,
+    },
+  });
+  gsap.from(".speakerCard", {
+    y: 50,
+    opacity: 0,
+    stagger: 0.2, // Stagger the cards
     scrollTrigger: {
       trigger: "#speakerSection",
       scroller: "body",
       start: "top 65%",
-      end: "top -5%",
+      end: "bottom 10%",
       scrub: 3,
     },
   });
-  gsap.from(".partners", {
+  gsap.from(".partners h1", { // Animate the heading first
     y: 50,
     opacity: 0,
-    stagger: 0.65,
     scrollTrigger: {
       trigger: ".partners",
       scroller: "body",
       start: "top 95%",
-      end: "top -1%",
+      end: "top 65%",
+      scrub: 2,
+    },
+  });
+  gsap.from("#moving-div", {
+    y: 50,
+    opacity: 0,
+    scrollTrigger: {
+      trigger: ".partners",
+      scroller: "body",
+      start: "top 80%",
+      end: "top 0%",
       scrub: 3,
     },
   });
@@ -237,28 +272,48 @@ function speakerPartnerSection() {
 speakerPartnerSection();
 
 function VideoAnimation() {
-  var videoPlayBtn = document.querySelector(".videoSection-center");
+  var videoPlayIcon = document.querySelector(".playIcon"); // Changed to target the play icon
   var video = document.querySelector("#videoSection video");
 
-  videoPlayBtn.addEventListener("click", function () {
-    video.play();
-    gsap.to(video, {
-      transform: "scaleX(1) scaleY(1)",
-      opacity: 1,
-      borderRadius: 0,
-    });
+  // Initial state of the video (hidden)
+  gsap.set(video, {
+    transform: "scaleX(0.7) scaleY(0)",
+    opacity: 0,
+    borderRadius: "30px"
+  });
+
+  videoPlayIcon.addEventListener("click", function () {
+    if (video.paused) {
+      video.play();
+      gsap.to(video, {
+        transform: "scaleX(1) scaleY(1)",
+        opacity: 1,
+        borderRadius: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+      videoPlayIcon.style.display = 'none'; // Hide play icon when video plays
+    }
   });
 
   video.addEventListener("click", function () {
-    video.pause();
-    gsap.to(video, {
-      transform: "scaleX(0.7) scaleY(0)",
-      opacity: 0,
-      borderRadius: "30px",
-    });
+    if (!video.paused) {
+      video.pause();
+      gsap.to(video, {
+        transform: "scaleX(0.7) scaleY(0)",
+        opacity: 0,
+        borderRadius: "30px",
+        duration: 0.5,
+        ease: "power2.out"
+      });
+      videoPlayIcon.style.display = 'flex'; // Show play icon when video pauses
+    }
   });
 }
 VideoAnimation();
+
+// This window.onload block is already handled in index.html, removed from app.js
+/*
 window.addEventListener("load", () => {
   const introAnimation = document.getElementById("introAnimation");
   const surpriseBox = document.getElementById("surpriseBox");
@@ -280,4 +335,22 @@ window.addEventListener("load", () => {
     }, 900); // after burst
   }, 1000); // initial delay
 });
+*/
 
+// Call page_loadAnim after the main content becomes visible
+// This logic is now managed by the intro animation sequence in index.html
+document.addEventListener("DOMContentLoaded", () => {
+    const mainContent = document.getElementById("mainContent");
+    const observer = new MutationObserver((mutationsList, observer) => {
+        for(let mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                if (mainContent.style.visibility === 'visible') {
+                    page_loadAnim();
+                    observer.disconnect(); // Disconnect observer once animation is triggered
+                }
+            }
+        }
+    });
+
+    observer.observe(mainContent, { attributes: true, attributeFilter: ['style'] });
+});
