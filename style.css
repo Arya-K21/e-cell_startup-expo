@@ -3,16 +3,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   width: 100%;
+    overflow-x: hidden;
 }
 body {
   position: relative;
@@ -145,6 +146,7 @@ nav {
 .navbar {
   display: flex;
   list-style: none;
+  background-color: transparent;
   transition: background-color 0.3s ease, border-radius 0.3s ease;
 }
 
@@ -225,7 +227,7 @@ nav {
 }
 
 /* Responsive navbar toggle */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .navbar {
     position: absolute;
     top: 100%;
@@ -452,19 +454,21 @@ nav {
   }
 }
 
+
 .eventInfoContainer {
-  max-width: 900px;
+  
+  max-width: 100%;
   margin: 3rem auto;
   text-align: center;
   padding: 0 2rem;
-  z-index: 10;
   position: relative;
+  z-index: 10;
 }
 
 .eventDateLocation {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 500;
-  color: #ff5d0d;
+  color: #FF6A00;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
   animation: fadeSlideIn 2s ease forwards;
@@ -480,37 +484,32 @@ nav {
 }
 
 .typingText {
-  max-width: 100%;
-  width: fit-content;
-  margin: 1rem auto;
   color: #ffffff;
-  font-size: 1.2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #ff5d0d;
-  animation: typing 10s steps(60, end), blink 0.8s step-end infinite;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.95;
+  text-align: center;
+  word-break: break-word;
+  display: inline-block;
+  white-space: normal;
+  width: 100%;
 }
 
-/* Typing animation */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
+.blinkingCursor {
+  display: inline;
+  color: #FF6A00;
+  font-weight: bold;
+  animation: blink 0.8s step-end infinite;
 }
 
 @keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
+
 .highlightText {
-  color: #ff5d0d;
-  font-size: 1.2rem;
+  color: #FF6A00;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   letter-spacing: 1px;
   text-shadow: 0 0 10px #ff5d0d;
   animation: glowPulse 2s ease-in-out infinite alternate;
@@ -523,6 +522,29 @@ nav {
 
   to {
     text-shadow: 0 0 20px #ff5d0d, 0 0 30px #ff5d0d;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .eventInfoContainer {
+    padding: 0 1rem;
+  }
+
+  .typingText{
+    padding: 5;
+  }
+
+  .typingWrapper {
+    font-size: 1rem;
+  }
+
+  .highlightText {
+    font-size: 1rem;
+  }
+
+  .eventDateLocation {
+    font-size: 0.95rem;
   }
 }
 
@@ -624,6 +646,7 @@ nav {
   max-width: 800px;
   height: 250px;
   border-radius: 12px;
+  background: black;
   transition: transform 0.3s ease;
   display: block;
   margin-top: 35px;

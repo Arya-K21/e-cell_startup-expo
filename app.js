@@ -19,7 +19,7 @@ function handleScrollAndResize() {
 
   if (window.innerWidth > 992) { // Adjusted breakpoint to match responsive navbar in style.css
     if (window.scrollY > 100) {
-      nav.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Slightly opaque background for nav
+      nav.style.backgroundColor = "rgba(0, 0, 0, 0.2)"; // Slightly opaque background for nav
       navbar.style.background = "linear-gradient(247deg,  rgb(0, 0, 0) 100%)";
       navbar.style.borderRadius = "20px";
       navbar.style.padding = "15px 5px";
