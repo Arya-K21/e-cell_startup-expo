@@ -12,19 +12,22 @@ Shery.makeMagnet(".logo img", {
 });
 
 function handleScrollAndResize() {
+  console.log("script Loaded!!!")
+  console.log("ScrollY:", window.scrollY, "Width:", window.innerWidth);
   const nav = document.querySelector("nav");
   const navbar = document.querySelector(".navbar");
   const navRight = document.querySelector(".nav-right");
   const logo = document.querySelector(".logo");
 
   if (window.innerWidth > 992) { // Adjusted breakpoint to match responsive navbar in style.css
-    if (window.scrollY > 100) {
+    if (window.scrollY === 0) {
       nav.style.backgroundColor = "rgba(0, 0, 0, 0.2)"; // Slightly opaque background for nav
       navbar.style.background = "linear-gradient(247deg,  rgb(0, 0, 0) 100%)";
       navbar.style.borderRadius = "20px";
       navbar.style.padding = "15px 5px";
       navRight.style.opacity = "0";
-      logo.style.opacity = "0";
+      logo.style.opacity = "1";
+    
     } else {
       nav.style.backgroundColor = "transparent"; // Keep transparent when at top
       navbar.style.background = "transparent";
@@ -44,12 +47,21 @@ function handleScrollAndResize() {
   }
 }
 
-// Attach the event listeners
+// // Attach the event listeners
 window.addEventListener("scroll", handleScrollAndResize);
 window.addEventListener("resize", handleScrollAndResize);
-
-// Initial check to apply the correct styles on page load
 handleScrollAndResize();
+// // window.addEventListener("DOMContentLoaded", handleScrollAndResize);
+// // Initial check to apply the correct styles on page load
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("DOM fully loaded");
+//   handleScrollAndResize();
+//   window.addEventListener("scroll", handleScrollAndResize);
+//   window.addEventListener("resize", handleScrollAndResize);
+// });
+
+
 
 // OnPageLoad Animation
 function page_loadAnim() {

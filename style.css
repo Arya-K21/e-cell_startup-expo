@@ -13,7 +13,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 body {
   position: relative;
@@ -118,6 +118,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   background: transparent;
   padding: 18px 2%;
   transition: all 0.5s ease;
@@ -227,7 +228,24 @@ nav {
 }
 
 /* Responsive navbar toggle */
-@media (max-width: 768px) {
+@media (width< 992px) {
+  .nav{
+    position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 900000000000000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* background: transparent; */
+  padding: 18px 2%;
+  transition: all 0.5s ease;
+  backdrop-filter: none;
+  /* background-color: transparent; */
+
+  }
   .navbar {
     position: absolute;
     top: 100%;
@@ -256,6 +274,12 @@ nav {
 
 /*-------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Header ----------------------------------------------------*/
+#heroBg{
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+
 
 .heroSection {
   position: relative;
@@ -365,7 +389,7 @@ nav {
 }
 
 .countdownSection {
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 2rem 4vw;
   text-align: center;
   background: linear-gradient(180deg, #1a1a1a, #2a1200); /* clean dark-orange gradient */
@@ -878,33 +902,50 @@ nav {
 .carousel .list .item {
   transition: opacity 0.5s ease-in-out, z-index 0.3s ease-in-out;
 }
-
 .arrows {
-  position: absolute;
-  top: 50%;
+  position: absolute; /* Position over the carousel */
+  top: 50%; /* Vertically center */
   left: 0;
   right: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  padding: 250px;
-  z-index: 10;
+  z-index: 10; /* Stay on top */
+  transform: translateY(-50%); /* Exact vertical centering */
 }
 
-#prev,
-#next {
+/* Style for previous button */
+#prev {
+  position: absolute; /* Position separately */
+  left: 15px; /* Push to left side */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Exact vertical centering */
   width: 40px;
   height: 40px;
   border-radius: 50%;
   font-family: monospace;
   border: 1px solid #5555;
   font-size: large;
+  background-color: rgba(0, 0, 0, 0.4); /* Optional: visible on light image */
+  color: white;
+  cursor: pointer;
 }
 
-#back {
-  display: none;
+/* Style for next button */
+#next {
+  position: absolute; /* Position separately */
+  right: 15px; /* Push to right side */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Exact vertical centering */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-family: monospace;
+  border: 1px solid #5555;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0.4); /* Optional */
+  color: white;
+  cursor: pointer;
 }
+
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Offer Section ----------------------------------------------------*/
