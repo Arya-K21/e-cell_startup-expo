@@ -119,11 +119,12 @@ nav {
   align-items: center;
   justify-content: space-between;
   
-  background: transparent;
+  /* background: transparent; Removed this line */
+  background-color: rgba(0, 0, 0, 0.7); /* Set an initial semi-transparent black background */
   padding: 18px 2%;
   transition: all 0.5s ease;
   backdrop-filter: none;
-  background-color: transparent;
+  /* background-color: transparent; Removed this line */
 }
 
 .logo {
@@ -131,11 +132,14 @@ nav {
   align-items: center;
   text-decoration: none;
   transition: opacity 0.3s ease;
+  position: relative; /* Add this to enable 'left' property */
+  left: 2%; /* Adjust as needed to move the logo more to the left */
 }
 
 .logo img {
   margin-right: 3px;
   width: 120px;
+  opacity: 1; /* Ensure the logo image is fully opaque */
 }
 
 .logo span {
@@ -154,8 +158,8 @@ nav {
 .navbar a {
   font-size: 1.1rem;
   font-weight: 500;
-  padding: 5px;
-  margin: 0 20px;
+  padding: 5px 25px;
+  margin: 0;
   color: white;
   text-decoration: none;
   transition: all 0.5s ease;
@@ -174,6 +178,7 @@ nav {
   align-items: center;
   transition: opacity 0.3s ease;
 }
+
 .nav-right a {
   margin-right: 25px;
   margin-left: 10px;
@@ -197,6 +202,7 @@ nav {
 .navbar a {
   position: relative;
 }
+
 .navbar a::after {
   content: "";
   position: absolute;
@@ -229,8 +235,8 @@ nav {
 
 /* Responsive navbar toggle */
 @media (width< 992px) {
-  .nav{
-    position: fixed;
+  nav{
+  position: fixed;
   width: 100%;
   top: 0;
   right: 0;
@@ -238,13 +244,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  /* background: transparent; */
+  background-color: black; /* Ensure solid black background for mobile nav */
   padding: 18px 2%;
   transition: all 0.5s ease;
   backdrop-filter: none;
   /* background-color: transparent; */
-
   }
   .navbar {
     position: absolute;
@@ -257,7 +261,6 @@ nav {
     display: none;
     padding: 1rem 0;
   }
-
   .navbar.active {
     display: flex;
   }
@@ -330,6 +333,8 @@ nav {
   height: 100vh;
   object-fit: cover;
   pointer-events: none;
+  opacity: 0.5;
+  background-color: #000;
 }
 
 #heroText {
@@ -766,14 +771,51 @@ nav {
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Event hIghlights Corousel ----------------------------------------------------*/
+/* Existing root variables in style.css */
+:root {
+  --orange-main: #ff6a00;
+  --orange-dark: #b34700;
+  --orange-glow: rgba(255, 106, 0, 0.4);
+
+  /* Define these as global variables to be used by the CSS rules below */
+  /* Adjust these values to fine-tune the 3D effect and spacing */
+  /* These represent positions relative to the center after translate(-50%, -50%) */
+  --item-left-transform: translateX(-150px) scale(0.7); /* Item to the far left, smaller */
+  --item-left-opacity: 0.3;
+  --item-left-zIndex: 8;
+  --item-left-filter: blur(8px);
+
+  --item-active-transform: translateX(0) scale(1); /* Main active item */
+  --item-active-opacity: 1;
+  --item-active-zIndex: 10;
+  --item-active-filter: blur(0px);
+
+  --item-right-transform: translateX(150px) scale(0.7); /* Item to the far right, smaller */
+  --item-right-opacity: 0.3;
+  --item-right-zIndex: 8;
+  --item-right-filter: blur(8px);
+
+  /* For items completely off-screen */
+  --item-offscreen-left-transform: translateX(-500px) scale(0.1);
+  --item-offscreen-right-transform: translateX(500px) scale(0.1);
+  --item-offscreen-opacity: 0;
+  --item-offscreen-zIndex: 1;
+  --item-offscreen-filter: blur(20px);
+}
+
+
+/*------------------------------------------------- Event Highlights Carousel ----------------------------------------------------*/
 .carousel {
   position: relative;
-  height: 650px;
+  height: 650px; /* Adjust height as needed */
   overflow: hidden;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1200px; /* For 3D effect */
+  background: linear-gradient(180deg, #1a0d00, #331a00); /* Add a background to the carousel section */
+  padding: 50px 0; /* Add some padding around the carousel */
 }
 
 /* removed the previous blur glow */
@@ -785,31 +827,148 @@ nav {
   position: absolute;
   width: 100%;
   height: 100%;
+  /* No direct transform on list; items handle their own movement */
 }
 
 .carousel .list .item {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Base centering transform for all items */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.5s;
+  text-align: center;
+  
+  /* Crucial: Set transition for all transform, opacity, filter changes */
+  transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), /* Smooth and bouncy */
+              opacity 0.7s ease-in-out,
+              filter 0.7s ease-in-out,
+              z-index 0.01s ease-in-out; /* Z-index should change almost instantly for proper layering */
+  
+  width: 100%; /* Ensure item takes full width for centering */
+  pointer-events: none; /* Make items not clickable by default */
 }
 
-.carousel .list .item:nth-child(2) {
-  z-index: 10;
-  opacity: 1;
+/* Default states for items based on their position in the HTML */
+/* These apply when no 'next' or 'prev' class is on .carousel */
+.carousel .list .item:nth-child(1) { /* Item on the far left initially */
+    transform: translate(-50%, -50%) var(--item-left-transform);
+    opacity: var(--item-left-opacity);
+    z-index: var(--item-left-zIndex);
+    filter: var(--item-left-filter);
+}
+.carousel .list .item:nth-child(2) { /* The initially active item */
+  transform: translate(-50%, -50%) var(--item-active-transform);
+  opacity: var(--item-active-opacity);
+  z-index: var(--item-active-zIndex);
+  filter: var(--item-active-filter);
+  pointer-events: auto; /* Make the active item clickable */
+}
+.carousel .list .item:nth-child(3) { /* The item to the immediate right initially */
+  transform: translate(-50%, -50%) var(--item-right-transform);
+  opacity: var(--item-right-opacity);
+  z-index: var(--item-right-zIndex);
+  filter: var(--item-right-filter);
+}
+/* All other items are off-screen and hidden initially */
+.carousel .list .item:nth-child(n+4) {
+  transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
+  opacity: var(--item-offscreen-opacity);
+  z-index: var(--item-offscreen-zIndex);
+  filter: var(--item-offscreen-filter);
+}
+
+
+/* --- State when 'next' class is added to .carousel (moving items left) --- */
+/* (This applies to the original HTML order BEFORE JavaScript reorders them.
+   The JS reordering happens instantly, then the CSS transitions take over.) */
+.carousel.next .list .item:nth-child(1) { /* This was the first item, now moved to last position by JS */
+  transform: translate(-50%, -50%) var(--item-offscreen-left-transform); /* It moves out of view from original left */
+  opacity: var(--item-offscreen-opacity);
+  z-index: var(--item-offscreen-zIndex);
+  filter: var(--item-offscreen-filter);
+}
+.carousel.next .list .item:nth-child(2) { /* This was the second item (active), now moves to left-side */
+  transform: translate(-50%, -50%) var(--item-left-transform);
+  opacity: var(--item-left-opacity);
+  z-index: var(--item-left-zIndex);
+  filter: var(--item-left-filter);
+  pointer-events: none;
+}
+.carousel.next .list .item:nth-child(3) { /* This was the third item (right-side), now moves to active */
+  transform: translate(-50%, -50%) var(--item-active-transform);
+  opacity: var(--item-active-opacity);
+  z-index: var(--item-active-zIndex);
+  filter: var(--item-active-filter);
+  pointer-events: auto;
+}
+.carousel.next .list .item:nth-child(4) { /* This was the fourth item (off-screen right), now moves to right-side */
+  transform: translate(-50%, -50%) var(--item-right-transform);
+  opacity: var(--item-right-opacity);
+  z-index: var(--item-right-zIndex);
+  filter: var(--item-right-filter);
+}
+/* Remaining items stay off-screen right */
+.carousel.next .list .item:nth-child(n+5) {
+  transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
+  opacity: var(--item-offscreen-opacity);
+  z-index: var(--item-offscreen-zIndex);
+  filter: var(--item-offscreen-filter);
+}
+
+
+/* --- State when 'prev' class is added to .carousel (moving items right) --- */
+/* (This applies to the original HTML order BEFORE JavaScript reorders them.
+   The JS reordering happens instantly, then the CSS transitions take over.) */
+.carousel.prev .list .item:nth-child(1) { /* This was the last item, now moved to first position by JS (becomes active) */
+    transform: translate(-50%, -50%) var(--item-active-transform);
+    opacity: var(--item-active-opacity);
+    z-index: var(--item-active-zIndex);
+    filter: var(--item-active-filter);
+    pointer-events: auto;
+}
+.carousel.prev .list .item:nth-child(2) { /* This was the original first item (left-side), now moves to right-side */
+    transform: translate(-50%, -50%) var(--item-right-transform);
+    opacity: var(--item-right-opacity);
+    z-index: var(--item-right-zIndex);
+    filter: var(--item-right-filter);
+}
+.carousel.prev .list .item:nth-child(3) { /* This was the original second item (active), now moves off-screen right */
+    transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
+    opacity: var(--item-offscreen-opacity);
+    z-index: var(--item-offscreen-zIndex);
+    filter: var(--item-offscreen-filter);
+}
+/* Any other items that were further right (e.g., n+4) move into left-side off-screen */
+.carousel.prev .list .item:nth-child(n+4) {
+    transform: translate(-50%, -50%) var(--item-offscreen-left-transform); /* They effectively become off-screen left */
+    opacity: var(--item-offscreen-opacity);
+    z-index: var(--item-offscreen-zIndex);
+    filter: var(--item-offscreen-filter);
+}
+
+
+/* Center introduce block for all items, adjusted for responsive */
+.carousel .list .item .introduce {
+  opacity: 1; /* Always visible for items that are not fully hidden by carousel states */
+  pointer-events: auto; /* Can be interacted with unless hidden by parent */
+  position: static;
+  transform: none;
+  transition: none;
+  text-align: center;
+  width: 90%; /* Allow some flexibility */
+  max-width: 500px; /* Limit max width of text block */
+  margin-top: 20px; /* Space between image and text */
 }
 
 .carousel .list .item img {
   max-width: 400px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Control spacing with introduce margin-top */
   animation: float 3s ease-in-out infinite;
+  display: block; /* Ensures consistent sizing */
 }
 
 @keyframes float {
@@ -823,75 +982,25 @@ nav {
   }
 }
 
-/* center introduce block */
-.carousel .list .item .introduce {
-  opacity: 1;
-  pointer-events: auto;
-  position: static;
-  transform: none;
-  transition: none;
-  text-align: center;
-  width: auto;
-}
-
 .carousel .list .item .introduce .title {
   font-size: 2.5em;
   font-weight: 500;
   line-height: 1em;
+  color: var(--orange-main); /* Use your theme color */
 }
 
 .carousel .list .item .introduce .topic {
   font-size: 4em;
   font-weight: 500;
+  line-height: 1.2; /* Better readability */
+  margin-bottom: 10px; /* Space after topic */
 }
 
 .carousel .list .item .introduce .des {
   font-size: 20px;
-  margin-top: 15px;
+  margin-top: 0; /* Remove redundant margin-top */
   color: white;
-  font-family: "Times New Roman", Times, serif;
-}
-
-.carousel .list .item .introduce .seeMore {
-  font-family: Poppins;
-  margin-top: 1.2em;
-  padding: 5px 0;
-  border: none;
-  border-bottom: 1px solid #555;
-  background-color: transparent;
-  font-weight: bold;
-  color: white;
-  letter-spacing: 3px;
-  transition: background 0.5s;
-}
-
-/* animation text in item2 */
-@keyframes showContent {
-  from {
-    transform: translateY(-30px);
-    filter: blur(10px);
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-    filter: blur(0px);
-  }
-}
-
-/* next click */
-.carousel.next .item:nth-child(1),
-.carousel.next .item:nth-child(2),
-.carousel.next .item:nth-child(3),
-.carousel.next .item:nth-child(4) {
-  /* uses your existing custom transforms via JS */
-}
-
-.carousel.prev .list .item:nth-child(2),
-.carousel.prev .list .item:nth-child(3),
-.carousel.prev .list .item:nth-child(4),
-.carousel.prev .list .item:nth-child(5) {
-  /* uses your existing transforms */
+  font-family: "Poppins", sans-serif; /* Use Poppins for consistency */
 }
 
 /* hide detail overlay so it stays simple */
@@ -899,53 +1008,100 @@ nav {
   display: none;
 }
 
-.carousel .list .item {
-  transition: opacity 0.5s ease-in-out, z-index 0.3s ease-in-out;
-}
+/* Arrows */
 .arrows {
   position: absolute; /* Position over the carousel */
   top: 50%; /* Vertically center */
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 10; /* Stay on top */
+  z-index: 100; /* Stay on top of items */
   transform: translateY(-50%); /* Exact vertical centering */
+  display: flex;
+  justify-content: space-between; /* Pushes buttons to ends */
+  padding: 0 20px; /* Space from edges */
 }
 
-/* Style for previous button */
-#prev {
-  position: absolute; /* Position separately */
-  left: 15px; /* Push to left side */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Exact vertical centering */
-  width: 40px;
-  height: 40px;
+#prev, #next {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   font-family: monospace;
-  border: 1px solid #5555;
-  font-size: large;
-  background-color: rgba(0, 0, 0, 0.4); /* Optional: visible on light image */
+  font-size: 2rem; /* Larger arrows */
+  background-color: rgba(255, 106, 0, 0.3); /* Semi-transparent orange */
   color: white;
+  border: 1px solid rgba(255, 106, 0, 0.5); /* Orange border */
   cursor: pointer;
+  display: flex; /* For centering content */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 106, 0, 0.2); /* Subtle glow */
 }
 
-/* Style for next button */
-#next {
-  position: absolute; /* Position separately */
-  right: 15px; /* Push to right side */
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Exact vertical centering */
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-family: monospace;
-  border: 1px solid #5555;
-  font-size: large;
-  background-color: rgba(0, 0, 0, 0.4); /* Optional */
-  color: white;
-  cursor: pointer;
+#prev:hover, #next:hover {
+  background-color: rgba(255, 106, 0, 0.6);
+  border-color: var(--orange-main);
+  transform: scale(1.1); /* Simple scale up on hover */
+  box-shadow: 0 0 20px rgba(255, 106, 0, 0.6);
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel {
+    height: 550px; /* Adjust height for smaller screens */
+  }
+
+  .carousel .list .item img {
+    max-width: 250px; /* Smaller images */
+  }
+
+  .carousel .list .item .introduce .title {
+    font-size: 1.8em;
+  }
+
+  .carousel .list .item .introduce .topic {
+    font-size: 3em;
+  }
+
+  .carousel .list .item .introduce .des {
+    font-size: 16px;
+  }
+
+  #prev, #next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        height: 500px;
+        padding: 20px 0;
+    }
+    .carousel .list .item img {
+        max-width: 180px;
+    }
+    .carousel .list .item .introduce .title {
+        font-size: 1.4em;
+    }
+    .carousel .list .item .introduce .topic {
+        font-size: 2.2em;
+    }
+    .carousel .list .item .introduce .des {
+        font-size: 14px;
+        max-width: 90%;
+    }
+    .arrows {
+        padding: 0 10px; /* Less padding for very small screens */
+    }
+    #prev, #next {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Offer Section ----------------------------------------------------*/
@@ -1880,3 +2036,187 @@ footer > p {
   }
 }
 
+/* Wadhwani Foundation */
+#wadhwanisection{
+  background: linear-gradient(to right, #1a0d00, #331a00);
+  color: white;
+  padding: 100px;
+  margin-top: -60px;
+}
+
+.wadhwani-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.wadhwani-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.wadhwani-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.wadhwani-box {
+  flex: 1 1 48%;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.wadhwani-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(255, 93, 13, 0.3),
+    /* stronger outer glow */ 4px 4px 12px rgba(255, 153, 0, 0.2);
+  /* subtle soft layer */
+  border-right: 1px solid rgba(255, 93, 13, 0.25);
+  /* vivid orange border */
+  border-bottom: 1px solid rgba(255, 93, 13, 0.25);
+}
+
+.wadhwani-box h2 {
+  color: #ff5d0d;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.wadhwani-box p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #d0d0d0;
+}
+
+/* Image Box */
+.imageww-box {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.imagew-box img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 25px auto 0 auto;
+}
+
+.imagew-box img:hover {
+  transform: scale(1.03);
+}
+
+.imagew-box2 {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.imagew-box2 img {
+  width: 100%;
+  max-width: 800px;
+  height: 250px;
+  border-radius: 12px;
+  background: black;
+  transition: transform 0.3s ease;
+  display: block;
+  margin-top: 35px;
+}
+
+.imagew-box2 img:hover {
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wadhwani-row,
+  .wadhwani-row.reverse {
+    flex-direction: column;
+  }
+
+  .wadhwani-box {
+    flex: 1 1 100%;
+  }
+
+  .wadhwani-box img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+
+.wadhwani-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 24px rgba(255, 93, 13, 0.4),
+    /* stronger outer orange glow */ 4px 4px 12px rgba(255, 153, 0, 0.2);
+  /* soft fill shadow */
+  border-right: 1px solid rgba(255, 93, 13, 0.3);
+  /* brighter orange border */
+  border-bottom: 1px solid rgba(255, 93, 13, 0.3);
+}
+
+.wadhwani-box h2 {
+  color: #ff5d0d;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.wadhwani-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .wadhwani-container {
+    flex-direction: column;
+  }
+
+  .wadhwani-box {
+    flex: 1 1 100%;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate class */
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* Scroll trigger using IntersectionObserver */
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* Optional delay customization */
+.animate-fade-up:nth-child(2) {
+  animation-delay: 0.4s;
+}
