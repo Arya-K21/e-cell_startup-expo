@@ -412,11 +412,11 @@ nav {
   text-align: center;
 }
 
-/* Ripple container (Optional) */
+/* Ripple container (Optional)
 .ripple-container {
   position: relative;
-  z-index: 1; /* Ensure ripple container is above the overlay */
-  margin-top: 50px; /* Adjust as needed */
+  z-index: 1;
+  margin-top: 50px;
 }
 
 #nexusCore {
@@ -435,7 +435,7 @@ nav {
   transform: scale(0);
   opacity: 0;
   transition: all 0.7s ease-out;
-}
+}*/
 
 /* Responsive Layout */
 @media (max-width: 768px) {
