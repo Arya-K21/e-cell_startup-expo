@@ -57,22 +57,44 @@
         </div>
     </nav>
     <div class="Bg-image"> <img src="./img/landingpg.jpg" id="heroBg"></div>
-    <main class="min-h-screen flex items-center justify-center text-center px-4 relative z-10">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 animate-fade-in-up">
-                <span class="gradient-text block">Startup</span>
-                <span class="block mt-2">Expo</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-10 animate-fade-in-up delay-200">
-                Where Ideas Ignite & Futures are Built
-            </p>
-            <div class="relative inline-block">
-                <div id="nexusCore" class="w-48 h-20 md:w-64 md:h-64 rounded-full flex items-center justify-center ">
-                </div>
-                <div id="nexusRipple" class="absolute inset-0 rounded-full bg-purple-500 opacity-0 scale-0 origin-center transition-all duration-700 ease-out"></div>
-            </div>
-        </div>
-    </main>
+<main class="landing-section">
+  <!-- Heading -->
+  <div class="heading-container">
+    <h1>
+      <span class="startup">Startup</span><br>
+      <span class="expo">Expo</span>
+    </h1>
+    <p class="tagline">Where Ideas Ignite & Futures are Built</p>
+  </div>
+
+  <!-- Quotes -->
+  <div class="quote-grid">
+    <p>
+      “The best way to predict the future is to create it.”
+      <span>– Peter Drucker</span>
+    </p>
+    <p>
+      “All our dreams can come true, if we have the courage to pursue them.”
+      <span>– Walt Disney</span>
+    </p>
+    <p>
+      “It’s not about ideas. It’s about making ideas happen.”
+      <span>– Scott Belsky</span>
+    </p>
+    <p>
+      “Chase the vision, not the money. The money will end up following you.”
+      <span>– Tony Hsieh</span>
+    </p>
+  </div>
+
+  <!-- Ripple Core (Optional) -->
+  <div class="ripple-container">
+    <div id="nexusCore"></div>
+    <div id="nexusRipple"></div>
+  </div>
+</main>
+
+
     <section class="countdownSection">
         <h3>Countdown to Expo</h3>
         <div class="countdown" id="countdown">

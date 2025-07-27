@@ -277,12 +277,209 @@ nav {
 
 /*-------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Header ----------------------------------------------------*/
+/* === Landing Page Quotes Styling === */
+/* General Section Layout */
+.landing-section {
+  min-height: 100vh; /* Ensures it takes at least the full viewport height */
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Centers items horizontally within the container */
+  justify-content: center; /* Centers items vertically within the container */
+  padding: 100px 20px; /* Base padding, adjust further as needed */
+  text-align: center;
+  position: relative; /* Needed for z-index and pseudo-elements */
+  z-index: 10; /* Ensure this section is above the very base background elements */
+  max-width: 100%; /* Ensure it spans full width */
+  margin: 0 auto; /* Keep it centered horizontally */
+  box-sizing: border-box;
+  color: white; /* Default text color for this section */
+}
+
+/* Background Overlay for Better Text Contrast */
+/* This creates a semi-transparent layer over your background image, making text pop */
+.landing-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient: darker at top/bottom, transparent in the middle where main text is */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6) 0%, /* Starts dark */
+        transparent 30%,      /* Fades to transparent around the main title */
+        transparent 70%,
+        rgba(0, 0, 0, 0.7) 100% /* Ends darker to frame the bottom content */
+    );
+    z-index: 0; /* Ensures this overlay is behind the text content but above the background image */
+    pointer-events: none; /* Allows all mouse events to pass through to elements beneath */
+}
+
+/* Heading Styles */
+.heading-container {
+    /* To ensure this container is above the ::before overlay */
+    position: relative;
+    z-index: 1; 
+    /* The justify-content: center on .landing-section handles vertical alignment.
+       If you want to push it down MORE, you can add a top margin here or adjust padding-top on .landing-section
+    */
+    /* margin-top: 100px; /* Example: add more top margin if still too high */
+    margin-bottom: 40px; /* Space between heading block and tagline (adjust from original 10px) */
+    /* Removed the original h1 margin-bottom, controlling it here instead */
+}
+
+.heading-container h1 {
+  font-size: clamp(40px, 8vw, 72px); /* Use clamp for better responsiveness of main title */
+  font-weight: 800;
+  margin-bottom: 0px; /* Control spacing via .heading-container or .expo margin */
+  line-height: 1.1; /* Tighter line height for the big words */
+  font-family: "Bebas Neue", sans-serif; /* Example if you have this font */
+  /* Re-add your glowing text shadow if you removed it, for strong contrast */
+  text-shadow:
+    -2px 0px 2px rgba(255, 93, 13, 0.5),
+    -4px 0px 8px rgba(255, 93, 13, 0.3),
+    2px 0px 2px rgba(255, 93, 13, 0.5),
+    4px 0px 8px rgba(255, 93, 13, 0.3),
+    0 0 12px rgba(255, 255, 255, 0.7),
+    0 0 24px rgba(255, 255, 255, 0.4),
+    2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.heading-container .startup {
+  color: white; /* Changed to white to match Expo */
+    /* Removed gradient background properties */
+    /* background: linear-gradient(90deg, #ff6a00, #ffb347); */
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    display: block;
+  margin-top: 40px;
+}
+
+.heading-container .expo {
+  color: white; /* Default white */
+  display: block;
+  margin-top: -80px; /* Pull "Expo" slightly up closer to "Startup" */
+}
+
+.heading-container .tagline {
+  font-size: clamp(16px, 2.5vw, 20px); /* Responsive font size */
+  color: #e0e0e0; /* Softer white for tagline */
+  margin-top: 15px; /* Space from "Expo" */
+  margin-bottom: 80px; /* CRITICAL: Increased margin-bottom to push quotes down */
+  max-width: 600px; /* Optional: limit tagline width */
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Poppins", sans-serif; /* Ensure consistent font */
+}
+
+/* Quotes Grid */
+.quote-grid {
+  position: relative; /* Needed for z-index */
+  z-index: 1; /* Ensure quotes are above the overlay */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 100px auto; /* Keep existing margins for vertical spacing below grid */
+  box-sizing: border-box;
+  margin-top: -50px;
+}
+
+.quote-grid p {
+  font-style: italic;
+  color: #dddddd; /* Slightly lighter gray for quotes for contrast */
+  font-size: clamp(16px, 2.2vw, 18px); /* Responsive font size for quotes */
+  line-height: 1.8; /* Good line height for readability */
+  padding: 10px; /* Padded background for each quote */
+  word-break: break-word;
+  font-weight: bold; /* Make the main quote text bold */
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark background */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  backdrop-filter: blur(5px); /* Optional: slight blur effect */
+}
+
+.quote-grid p span {
+  display: block;
+  margin-top: 5px;
+  font-weight: 800; /* Extra bold for author */
+  font-size: 14px;
+  text-align: right;
+  color: #ffb347; /* Orange tint for author names */
+  text-align: center;
+}
+
+/* Ripple container (Optional) */
+.ripple-container {
+  position: relative;
+  z-index: 1; /* Ensure ripple container is above the overlay */
+  margin-top: 50px; /* Adjust as needed */
+}
+
+#nexusCore {
+  width: 200px;
+  height: 200px;
+  background-color: #333;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+#nexusRipple {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(128, 0, 128, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.7s ease-out;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .heading-container h1 {
+    font-size: 40px;
+  }
+  .heading-container .expo {
+      margin-top: -5px; /* Adjust for smaller screens */
+  }
+  .heading-container .tagline {
+      margin-bottom: 60px; /* Keep separation on mobile */
+  }
+
+  .quote-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .quote-grid p span {
+    text-align: center; /* Center author on mobile */
+  }
+}
+
+/* Additional Media Query for very small screens if needed */
+@media (max-width: 480px) {
+    .heading-container h1 {
+        font-size: 32px;
+    }
+    .heading-container .tagline {
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+    .quote-grid p {
+        font-size: 15px;
+        padding: 15px;
+    }
+}
+
+
 #heroBg{
   opacity: 0.5;
   filter: blur(2px);
 }
-
-
 
 .heroSection {
   position: relative;
@@ -771,337 +968,7 @@ nav {
 
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Event hIghlights Corousel ----------------------------------------------------*/
-/* Existing root variables in style.css */
-:root {
-  --orange-main: #ff6a00;
-  --orange-dark: #b34700;
-  --orange-glow: rgba(255, 106, 0, 0.4);
 
-  /* Define these as global variables to be used by the CSS rules below */
-  /* Adjust these values to fine-tune the 3D effect and spacing */
-  /* These represent positions relative to the center after translate(-50%, -50%) */
-  --item-left-transform: translateX(-150px) scale(0.7); /* Item to the far left, smaller */
-  --item-left-opacity: 0.3;
-  --item-left-zIndex: 8;
-  --item-left-filter: blur(8px);
-
-  --item-active-transform: translateX(0) scale(1); /* Main active item */
-  --item-active-opacity: 1;
-  --item-active-zIndex: 10;
-  --item-active-filter: blur(0px);
-
-  --item-right-transform: translateX(150px) scale(0.7); /* Item to the far right, smaller */
-  --item-right-opacity: 0.3;
-  --item-right-zIndex: 8;
-  --item-right-filter: blur(8px);
-
-  /* For items completely off-screen */
-  --item-offscreen-left-transform: translateX(-500px) scale(0.1);
-  --item-offscreen-right-transform: translateX(500px) scale(0.1);
-  --item-offscreen-opacity: 0;
-  --item-offscreen-zIndex: 1;
-  --item-offscreen-filter: blur(20px);
-}
-
-
-/*------------------------------------------------- Event Highlights Carousel ----------------------------------------------------*/
-.carousel {
-  position: relative;
-  height: 650px; /* Adjust height as needed */
-  overflow: hidden;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1200px; /* For 3D effect */
-  background: linear-gradient(180deg, #1a0d00, #331a00); /* Add a background to the carousel section */
-  padding: 50px 0; /* Add some padding around the carousel */
-}
-
-/* removed the previous blur glow */
-.carousel::before {
-  display: none;
-}
-
-.carousel .list {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* No direct transform on list; items handle their own movement */
-}
-
-.carousel .list .item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Base centering transform for all items */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  
-  /* Crucial: Set transition for all transform, opacity, filter changes */
-  transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55), /* Smooth and bouncy */
-              opacity 0.7s ease-in-out,
-              filter 0.7s ease-in-out,
-              z-index 0.01s ease-in-out; /* Z-index should change almost instantly for proper layering */
-  
-  width: 100%; /* Ensure item takes full width for centering */
-  pointer-events: none; /* Make items not clickable by default */
-}
-
-/* Default states for items based on their position in the HTML */
-/* These apply when no 'next' or 'prev' class is on .carousel */
-.carousel .list .item:nth-child(1) { /* Item on the far left initially */
-    transform: translate(-50%, -50%) var(--item-left-transform);
-    opacity: var(--item-left-opacity);
-    z-index: var(--item-left-zIndex);
-    filter: var(--item-left-filter);
-}
-.carousel .list .item:nth-child(2) { /* The initially active item */
-  transform: translate(-50%, -50%) var(--item-active-transform);
-  opacity: var(--item-active-opacity);
-  z-index: var(--item-active-zIndex);
-  filter: var(--item-active-filter);
-  pointer-events: auto; /* Make the active item clickable */
-}
-.carousel .list .item:nth-child(3) { /* The item to the immediate right initially */
-  transform: translate(-50%, -50%) var(--item-right-transform);
-  opacity: var(--item-right-opacity);
-  z-index: var(--item-right-zIndex);
-  filter: var(--item-right-filter);
-}
-/* All other items are off-screen and hidden initially */
-.carousel .list .item:nth-child(n+4) {
-  transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
-  opacity: var(--item-offscreen-opacity);
-  z-index: var(--item-offscreen-zIndex);
-  filter: var(--item-offscreen-filter);
-}
-
-
-/* --- State when 'next' class is added to .carousel (moving items left) --- */
-/* (This applies to the original HTML order BEFORE JavaScript reorders them.
-   The JS reordering happens instantly, then the CSS transitions take over.) */
-.carousel.next .list .item:nth-child(1) { /* This was the first item, now moved to last position by JS */
-  transform: translate(-50%, -50%) var(--item-offscreen-left-transform); /* It moves out of view from original left */
-  opacity: var(--item-offscreen-opacity);
-  z-index: var(--item-offscreen-zIndex);
-  filter: var(--item-offscreen-filter);
-}
-.carousel.next .list .item:nth-child(2) { /* This was the second item (active), now moves to left-side */
-  transform: translate(-50%, -50%) var(--item-left-transform);
-  opacity: var(--item-left-opacity);
-  z-index: var(--item-left-zIndex);
-  filter: var(--item-left-filter);
-  pointer-events: none;
-}
-.carousel.next .list .item:nth-child(3) { /* This was the third item (right-side), now moves to active */
-  transform: translate(-50%, -50%) var(--item-active-transform);
-  opacity: var(--item-active-opacity);
-  z-index: var(--item-active-zIndex);
-  filter: var(--item-active-filter);
-  pointer-events: auto;
-}
-.carousel.next .list .item:nth-child(4) { /* This was the fourth item (off-screen right), now moves to right-side */
-  transform: translate(-50%, -50%) var(--item-right-transform);
-  opacity: var(--item-right-opacity);
-  z-index: var(--item-right-zIndex);
-  filter: var(--item-right-filter);
-}
-/* Remaining items stay off-screen right */
-.carousel.next .list .item:nth-child(n+5) {
-  transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
-  opacity: var(--item-offscreen-opacity);
-  z-index: var(--item-offscreen-zIndex);
-  filter: var(--item-offscreen-filter);
-}
-
-
-/* --- State when 'prev' class is added to .carousel (moving items right) --- */
-/* (This applies to the original HTML order BEFORE JavaScript reorders them.
-   The JS reordering happens instantly, then the CSS transitions take over.) */
-.carousel.prev .list .item:nth-child(1) { /* This was the last item, now moved to first position by JS (becomes active) */
-    transform: translate(-50%, -50%) var(--item-active-transform);
-    opacity: var(--item-active-opacity);
-    z-index: var(--item-active-zIndex);
-    filter: var(--item-active-filter);
-    pointer-events: auto;
-}
-.carousel.prev .list .item:nth-child(2) { /* This was the original first item (left-side), now moves to right-side */
-    transform: translate(-50%, -50%) var(--item-right-transform);
-    opacity: var(--item-right-opacity);
-    z-index: var(--item-right-zIndex);
-    filter: var(--item-right-filter);
-}
-.carousel.prev .list .item:nth-child(3) { /* This was the original second item (active), now moves off-screen right */
-    transform: translate(-50%, -50%) var(--item-offscreen-right-transform);
-    opacity: var(--item-offscreen-opacity);
-    z-index: var(--item-offscreen-zIndex);
-    filter: var(--item-offscreen-filter);
-}
-/* Any other items that were further right (e.g., n+4) move into left-side off-screen */
-.carousel.prev .list .item:nth-child(n+4) {
-    transform: translate(-50%, -50%) var(--item-offscreen-left-transform); /* They effectively become off-screen left */
-    opacity: var(--item-offscreen-opacity);
-    z-index: var(--item-offscreen-zIndex);
-    filter: var(--item-offscreen-filter);
-}
-
-
-/* Center introduce block for all items, adjusted for responsive */
-.carousel .list .item .introduce {
-  opacity: 1; /* Always visible for items that are not fully hidden by carousel states */
-  pointer-events: auto; /* Can be interacted with unless hidden by parent */
-  position: static;
-  transform: none;
-  transition: none;
-  text-align: center;
-  width: 90%; /* Allow some flexibility */
-  max-width: 500px; /* Limit max width of text block */
-  margin-top: 20px; /* Space between image and text */
-}
-
-.carousel .list .item img {
-  max-width: 400px;
-  height: auto;
-  margin-bottom: 0; /* Control spacing with introduce margin-top */
-  animation: float 3s ease-in-out infinite;
-  display: block; /* Ensures consistent sizing */
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.carousel .list .item .introduce .title {
-  font-size: 2.5em;
-  font-weight: 500;
-  line-height: 1em;
-  color: var(--orange-main); /* Use your theme color */
-}
-
-.carousel .list .item .introduce .topic {
-  font-size: 4em;
-  font-weight: 500;
-  line-height: 1.2; /* Better readability */
-  margin-bottom: 10px; /* Space after topic */
-}
-
-.carousel .list .item .introduce .des {
-  font-size: 20px;
-  margin-top: 0; /* Remove redundant margin-top */
-  color: white;
-  font-family: "Poppins", sans-serif; /* Use Poppins for consistency */
-}
-
-/* hide detail overlay so it stays simple */
-.carousel .list .item .detail {
-  display: none;
-}
-
-/* Arrows */
-.arrows {
-  position: absolute; /* Position over the carousel */
-  top: 50%; /* Vertically center */
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 100; /* Stay on top of items */
-  transform: translateY(-50%); /* Exact vertical centering */
-  display: flex;
-  justify-content: space-between; /* Pushes buttons to ends */
-  padding: 0 20px; /* Space from edges */
-}
-
-#prev, #next {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-family: monospace;
-  font-size: 2rem; /* Larger arrows */
-  background-color: rgba(255, 106, 0, 0.3); /* Semi-transparent orange */
-  color: white;
-  border: 1px solid rgba(255, 106, 0, 0.5); /* Orange border */
-  cursor: pointer;
-  display: flex; /* For centering content */
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 106, 0, 0.2); /* Subtle glow */
-}
-
-#prev:hover, #next:hover {
-  background-color: rgba(255, 106, 0, 0.6);
-  border-color: var(--orange-main);
-  transform: scale(1.1); /* Simple scale up on hover */
-  box-shadow: 0 0 20px rgba(255, 106, 0, 0.6);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .carousel {
-    height: 550px; /* Adjust height for smaller screens */
-  }
-
-  .carousel .list .item img {
-    max-width: 250px; /* Smaller images */
-  }
-
-  .carousel .list .item .introduce .title {
-    font-size: 1.8em;
-  }
-
-  .carousel .list .item .introduce .topic {
-    font-size: 3em;
-  }
-
-  .carousel .list .item .introduce .des {
-    font-size: 16px;
-  }
-
-  #prev, #next {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-    .carousel {
-        height: 500px;
-        padding: 20px 0;
-    }
-    .carousel .list .item img {
-        max-width: 180px;
-    }
-    .carousel .list .item .introduce .title {
-        font-size: 1.4em;
-    }
-    .carousel .list .item .introduce .topic {
-        font-size: 2.2em;
-    }
-    .carousel .list .item .introduce .des {
-        font-size: 14px;
-        max-width: 90%;
-    }
-    .arrows {
-        padding: 0 10px; /* Less padding for very small screens */
-    }
-    #prev, #next {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------- Offer Section ----------------------------------------------------*/
