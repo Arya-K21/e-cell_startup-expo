@@ -1143,33 +1143,7 @@ h2::after {
 }
 
 /* Wadhwani Foundation Section */
-/* Wadhwani Foundation Section */
-#wadhwanisection {
-  background: linear-gradient(to right, #1a0d00, #331a00);
-  color: white;
-  padding: 100px 5%; /* Keep larger padding for desktop */
-  margin-top: -60px; /* Adjust as needed for global layout */
-}
 
-.wadhwani-container {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.wadhwani-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.wadhwani-row.reverse {
-  flex-direction: row-reverse;
-}
 
 /* Wadhwani Box (Card) Specific Styling */
 .wadhwani-box {
