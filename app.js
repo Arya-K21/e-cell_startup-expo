@@ -27,7 +27,7 @@ Shery.makeMagnet(".logo img", {
 //       navbar.style.padding = "15px 5px";
 //       navRight.style.opacity = "0";
 //       logo.style.opacity = "1";
-    
+
 //     } else {
 //       nav.style.backgroundColor = "transparent"; // Keep transparent when at top
 //       navbar.style.background = "transparent";
@@ -55,10 +55,12 @@ function handleScrollAndResize() {
   const logo = document.querySelector(".logo");
 
   // Define a scroll threshold (e.g., 50 pixels) to trigger the change
-  const scrollThreshold = 50; 
+  const scrollThreshold = 50;
 
-  if (window.innerWidth > 992) { // For larger screens
-    if (window.scrollY > scrollThreshold) { // If scrolled down past the threshold
+  if (window.innerWidth > 992) {
+    // For larger screens
+    if (window.scrollY > scrollThreshold) {
+      // If scrolled down past the threshold
       nav.style.backgroundColor = "black"; // Make nav solid black when scrolled
       nav.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.5)"; // Optional: add a subtle shadow
       navbar.style.background = "transparent"; // Keep internal navbar transparent if desired
@@ -66,7 +68,8 @@ function handleScrollAndResize() {
       navbar.style.padding = "0";
       navRight.style.opacity = "1"; // Show nav-right elements
       logo.style.opacity = "1";
-    } else { // When at the very top (or below threshold)
+    } else {
+      // When at the very top (or below threshold)
       nav.style.backgroundColor = "rgba(0, 0, 0, 0.2)"; // Slightly opaque background for nav
       nav.style.boxShadow = "none"; // Remove shadow
       navbar.style.background = "linear-gradient(247deg,  rgb(0, 0, 0) 100%)";
@@ -101,8 +104,6 @@ handleScrollAndResize();
 //   window.addEventListener("scroll", handleScrollAndResize);
 //   window.addEventListener("resize", handleScrollAndResize);
 // });
-
-
 
 // OnPageLoad Animation
 function page_loadAnim() {
@@ -214,7 +215,8 @@ function offerAnim() {
 offerAnim();
 
 function speakerPartnerSection() {
-  gsap.from("#speakerSection h1", { // Animate the heading first
+  gsap.from("#speakerSection h1", {
+    // Animate the heading first
     y: 50,
     opacity: 0,
     scrollTrigger: {
@@ -237,7 +239,8 @@ function speakerPartnerSection() {
       scrub: 3,
     },
   });
-  gsap.from(".partners h1", { // Animate the heading first
+  gsap.from(".partners h1", {
+    // Animate the heading first
     y: 50,
     opacity: 0,
     scrollTrigger: {
@@ -270,7 +273,7 @@ function VideoAnimation() {
   gsap.set(video, {
     transform: "scaleX(0.7) scaleY(0)",
     opacity: 0,
-    borderRadius: "30px"
+    borderRadius: "30px",
   });
 
   videoPlayIcon.addEventListener("click", function () {
@@ -281,9 +284,9 @@ function VideoAnimation() {
         opacity: 1,
         borderRadius: 0,
         duration: 0.5,
-        ease: "power2.out"
+        ease: "power2.out",
       });
-      videoPlayIcon.style.display = 'none'; // Hide play icon when video plays
+      videoPlayIcon.style.display = "none"; // Hide play icon when video plays
     }
   });
 
@@ -295,9 +298,9 @@ function VideoAnimation() {
         opacity: 0,
         borderRadius: "30px",
         duration: 0.5,
-        ease: "power2.out"
+        ease: "power2.out",
       });
-      videoPlayIcon.style.display = 'flex'; // Show play icon when video pauses
+      videoPlayIcon.style.display = "flex"; // Show play icon when video pauses
     }
   });
 }
@@ -331,17 +334,23 @@ window.addEventListener("load", () => {
 // Call page_loadAnim after the main content becomes visible
 // This logic is now managed by the intro animation sequence in index.html
 document.addEventListener("DOMContentLoaded", () => {
-    const mainContent = document.getElementById("mainContent");
-    const observer = new MutationObserver((mutationsList, observer) => {
-        for(let mutation of mutationsList) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                if (mainContent.style.visibility === 'visible') {
-                    page_loadAnim();
-                    observer.disconnect(); // Disconnect observer once animation is triggered
-                }
-            }
+  const mainContent = document.getElementById("mainContent");
+  const observer = new MutationObserver((mutationsList, observer) => {
+    for (let mutation of mutationsList) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "style"
+      ) {
+        if (mainContent.style.visibility === "visible") {
+          page_loadAnim();
+          observer.disconnect(); // Disconnect observer once animation is triggered
         }
-    });
+      }
+    }
+  });
 
-    observer.observe(mainContent, { attributes: true, attributeFilter: ['style'] });
+  observer.observe(mainContent, {
+    attributes: true,
+    attributeFilter: ["style"],
+  });
 });

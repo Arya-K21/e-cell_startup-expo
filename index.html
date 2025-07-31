@@ -1,730 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StartupExpo 2025</title>
+    <link rel="icon" href="./img/startup_expo_logo.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StartupExpo 2025</title>
-  <link rel="icon" href="./img/startup_expo_logo.png" type="image/png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    <link rel="stylesheet" href="./style.css" />
 
-  <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+      #cosmicCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+      }
+    </style>
+  </head>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <style>
-    #cosmicCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-    }
-  </style>
-</head>
+  <body>
+    <div id="introAnimation">
+      <div id="surpriseBox" class="rounded-xl"></div>
+      <canvas id="cosmicCanvas"></canvas>
+    </div>
 
-<body>
-  <div id="introAnimation">
-    <div id="surpriseBox" class="rounded-xl"></div>
-    <canvas id="cosmicCanvas"></canvas>
-  </div>
-
-<div id="mainContent" style="opacity: 0; visibility: hidden; ">
-
-            <nav>
+    <div id="mainContent" style="opacity: 0; visibility: hidden">
+      <nav>
         <a href="#" class="logo">
-            <img src="./img/startupLogo.png" alt=""><span>&nbsp;</span>
+          <img src="./img/startupLogo.png" alt="" /><span>&nbsp;</span>
         </a>
         <ul class="navbar">
-            <li><a href="#heroBg">Home</a></li>
-            <li><a href="#aboutSection">About</a></li>
-            <li><a href="#carousel">Event Highlights</a></li>
-            <li><a href="#speakerSection">Speakers</a></li>
-            <li><a href="#wadhwanisection">Wadhwani Foundation</a></li>
-            <li><a href="#FAQ">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <li><a href="#heroBg">Home</a></li>
+          <li><a href="#aboutSection">About</a></li>
+          <li><a href="#carousel">Event Highlights</a></li>
+          <li><a href="#speakerSection">Speakers</a></li>
+          <li><a href="#wadhwanisection">Wadhwani Foundation</a></li>
+          <li><a href="#FAQ">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="nav-right">
-            <img src="./img/ECELL-LOGO.png" alt="" height="65" width="65">
-            <img src="./img/mitLogo.png" alt="" height="65" width="65">&nbsp;
-            <div class="bx bx-menu" id="menu-icon">
-            </div>
+          <img src="./img/ECELL-LOGO.png" alt="" height="65" width="65" />
+          <img src="./img/mitLogo.png" alt="" height="65" width="65" />&nbsp;
+          <div class="bx bx-menu" id="menu-icon"></div>
         </div>
-    </nav>
-    <div class="Bg-image"> <img src="./img/landingpg.jpg" id="heroBg"></div>
-<main class="landing-section">
-  <!-- Heading -->
-  <div class="heading-container">
-    <h1>
-      <span class="startup">Startup</span><br>
-      <span class="expo">Expo</span>
-    </h1>
-    <p class="tagline">Where Ideas Ignite & Futures are Built</p>
-  </div>
+      </nav>
+      <div class="Bg-image"><img src="./img/landingpg.jpg" id="heroBg" /></div>
+      <main class="landing-section">
+        <!-- Heading -->
+        <div class="heading-container">
+          <h1>
+            <span class="startup">Startup</span><br />
+            <span class="expo">Expo</span>
+          </h1>
+          <p class="tagline">Where Ideas Ignite & Futures are Built</p>
+        </div>
 
-  <!-- Quotes -->
-  <div class="quote-grid">
-    <p>
-      “The best way to predict the future is to create it.”
-      <span>– Peter Drucker</span>
-    </p>
-    <p>
-      “All our dreams can come true, if we have the courage to pursue them.”
-      <span>– Walt Disney</span>
-    </p>
-    <p>
-      “It’s not about ideas. It’s about making ideas happen.”
-      <span>– Scott Belsky</span>
-    </p>
-    <p>
-      “Chase the vision, not the money. The money will end up following you.”
-      <span>– Tony Hsieh</span>
-    </p>
-  </div>
+        <!-- Quotes -->
+        <div class="quote-grid">
+          <p>
+            “The best way to predict the future is to create it.”
+            <span>– Peter Drucker</span>
+          </p>
+          <p>
+            “All our dreams can come true, if we have the courage to pursue
+            them.”
+            <span>– Walt Disney</span>
+          </p>
+          <p>
+            “It’s not about ideas. It’s about making ideas happen.”
+            <span>– Scott Belsky</span>
+          </p>
+          <p>
+            “Chase the vision, not the money. The money will end up following
+            you.”
+            <span>– Tony Hsieh</span>
+          </p>
+        </div>
 
-  <!-- Ripple Core (Optional) -->
-  <div class="ripple-container">
-    <div id="nexusCore"></div>
-    <div id="nexusRipple"></div>
-  </div>
-</main>
+        <!-- Ripple Core (Optional) -->
+        <div class="ripple-container">
+          <div id="nexusCore"></div>
+          <div id="nexusRipple"></div>
+        </div>
+      </main>
 
-
-    <section class="countdownSection">
+      <section class="countdownSection">
         <h3>Countdown to Expo</h3>
         <div class="countdown" id="countdown">
-            <div><span id="days">00</span>
-                <p>Days</p>
-            </div>
-            <div><span id="hours">00</span>
-                <p>Hours</p>
-            </div>
-            <div><span id="minutes">00</span>
-                <p>Minutes</p>
-            </div>
-            <div><span id="seconds">00</span>
-                <p>Seconds</p>
-            </div>
+          <div>
+            <span id="days">00</span>
+            <p>Days</p>
+          </div>
+          <div>
+            <span id="hours">00</span>
+            <p>Hours</p>
+          </div>
+          <div>
+            <span id="minutes">00</span>
+            <p>Minutes</p>
+          </div>
+          <div>
+            <span id="seconds">00</span>
+            <p>Seconds</p>
+          </div>
         </div>
-    </section>
-    <div class="eventInfoContainer">
-      <h4 class="highlightText">
-        11th - 14th August 2025 | MIT World Peace University, Pune
-      </h4>
+      </section>
+      <div class="eventInfoContainer">
+        <h4 class="highlightText">
+          11th - 14th August 2025 | MIT World Peace University, Pune
+        </h4>
 
-      <p class="typingText">
-        Step into four electrifying days of innovation, networking, and
-        opportunities at Startup Expo 2025.<span class="blinkingCursor">|</span>
-      </p>
-      <p>  </p>
-      <p class="typingText">
-        Join entrepreneurs, investors, and changemakers as we build the future
-        together.<span class="blinkingCursor">|</span>
-      </p>
-    </div>
+        <p class="typingText">
+          Step into four electrifying days of innovation, networking, and
+          opportunities at Startup Expo 2025.<span class="blinkingCursor"
+            >|</span
+          >
+        </p>
+        <p></p>
+        <p class="typingText">
+          Join entrepreneurs, investors, and changemakers as we build the future
+          together.<span class="blinkingCursor">|</span>
+        </p>
+      </div>
 
-    <!---------About Section-------->
-       <section id="aboutSection">
+      <!---------About Section-------->
+      <section id="aboutSection">
         <div class="about-container">
-
-            <div class="about-row">
-                <div class="about-box text-box">
-                    <h2>About Startup Expo 2025</h2>
-                    <p>
-                        Organised by the E-Cell at MIT World Peace University, Startup Expo 2025 is a pioneering
-                        platform bringing together over 60 startups daily, more than 20 investors, and thousands of
-                        students, corporates, and enthusiasts to celebrate entrepreneurship and innovation.
-                        <br><br>
-                        From product showcases and live pitches to mentorship and networking, Startup Expo is your
-                        gateway to connect with the brightest minds shaping tomorrow’s world.
-                    </p>
-                </div>
-                <div class="image-box">
-                    <img src="./img/startup-expo.png" alt="Startup Expo" />
-                </div>
+          <div class="about-row">
+            <div class="about-box text-box">
+              <h2>About Startup Expo 2025</h2>
+              <p>
+                Organised by the E-Cell at MIT World Peace University, Startup
+                Expo 2025 is a pioneering platform bringing together over 60
+                startups daily, more than 20 investors, and thousands of
+                students, corporates, and enthusiasts to celebrate
+                entrepreneurship and innovation.
+                <br /><br />
+                From product showcases and live pitches to mentorship and
+                networking, Startup Expo is your gateway to connect with the
+                brightest minds shaping tomorrow’s world.
+              </p>
             </div>
-
-            <div class="about-row">
-                <div class="image-box2">
-                    <img src="./img/MITWPU.png" alt="MIT-WPU Campus" />
-                </div>
-                <div class="about-box text-box">
-                    <h2>About MIT-WPU</h2>
-                    <p>
-                        MIT World Peace University (MIT-WPU) stands as a beacon of transformative education rooted in
-                        peace and innovation. With over 65,000 students across disciplines such as engineering,
-                        medicine, pharmacy, management, and design, MIT-WPU is committed to holistic development,
-                        practical learning, and fostering global impact.
-                    </p>
-                </div>
+            <div class="image-box">
+              <img src="./img/startup-expo.png" alt="Startup Expo" />
             </div>
+          </div>
 
+          <div class="about-row">
+            <div class="image-box2">
+              <img src="./img/MITWPU.png" alt="MIT-WPU Campus" />
+            </div>
+            <div class="about-box text-box">
+              <h2>About MIT-WPU</h2>
+              <p>
+                MIT World Peace University (MIT-WPU) stands as a beacon of
+                transformative education rooted in peace and innovation. With
+                over 65,000 students across disciplines such as engineering,
+                medicine, pharmacy, management, and design, MIT-WPU is committed
+                to holistic development, practical learning, and fostering
+                global impact.
+              </p>
+            </div>
+          </div>
         </div>
-    </section>
-<!-------------------------------------------------------------------------------------------------------------------------------->
-    <!------------------------------------------------- Event highlights Corousel ---------------------------------------------------->
-    <section class="highlightsSection" id="carousel">
-    <h2>Expo Highlights</h2>
-    <div class="highlightGrid">
-      <div class="highlightCard">
-        <h3>Startup Showcases</h3>
-        <p>Daily exhibitions of cutting-edge products and solutions by participating startups.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>Panel Discussions</h3>
-        <p>Conversations with entrepreneurs, investors, and professionals across diverse sectors.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>Roam Around Interviews</h3>
-        <p>Live broadcasts featuring entrepreneurs sharing their startup journeys.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>1-Minute Pitch Decks</h3>
-        <p>Concise and impactful pitches to investors and the audience.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>Networking Sessions</h3>
-        <p>Connect with industry leaders, potential collaborators, and fellow innovators.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>Mentorship Programs</h3>
-        <p>Guidance and insights from experienced entrepreneurs and professionals.</p>
-      </div>
-      <div class="highlightCard">
-        <h3>Workshops</h3>
-        <p>Participate in hands-on sessions to build essential entrepreneurial skills.</p>
-      </div>
-    </div>
-  </section>
+      </section>
+      <!-------------------------------------------------------------------------------------------------------------------------------->
+      <!------------------------------------------------- Event highlights Corousel ---------------------------------------------------->
+      <section class="highlightsSection" id="carousel">
+        <h2>Expo Highlights</h2>
+        <div class="highlightGrid">
+          <div class="highlightCard">
+            <h3>Startup Showcases</h3>
+            <p>
+              Daily exhibitions of cutting-edge products and solutions by
+              participating startups.
+            </p>
+          </div>
+          <div class="highlightCard">
+            <h3>Panel Discussions</h3>
+            <p>
+              Conversations with entrepreneurs, investors, and professionals
+              across diverse sectors.
+            </p>
+          </div>
+          <div class="highlightCard">
+            <h3>Roam Around Interviews</h3>
+            <p>
+              Live broadcasts featuring entrepreneurs sharing their startup
+              journeys.
+            </p>
+          </div>
+          <div class="highlightCard">
+            <h3>1-Minute Pitch Decks</h3>
+            <p>Concise and impactful pitches to investors and the audience.</p>
+          </div>
+          <div class="highlightCard">
+            <h3>Networking Sessions</h3>
+            <p>
+              Connect with industry leaders, potential collaborators, and fellow
+              innovators.
+            </p>
+          </div>
+          <div class="highlightCard">
+            <h3>Mentorship Programs</h3>
+            <p>
+              Guidance and insights from experienced entrepreneurs and
+              professionals.
+            </p>
+          </div>
+          <div class="highlightCard">
+            <h3>Workshops</h3>
+            <p>
+              Participate in hands-on sessions to build essential
+              entrepreneurial skills.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <div id="featured">
+      <div id="featured">
         <div class="fheading">
-            <h1 style="text-align: center; font-size: 2.5em;font-weight: 600;margin-bottom: 3.7vw;">What Do We Offer ?
-            </h1>
+          <h1
+            style="
+              text-align: center;
+              font-size: 2.5em;
+              font-weight: 600;
+              margin-bottom: 3.7vw;
+            "
+          >
+            What Do We Offer ?
+          </h1>
         </div>
         <div class="fsub-heading">
-            <h2 style="color: #ff5d0d;">For Students Section</h2>
-            <h3 style="margin-top: 1.5rem;">Why Students Should Attend</h3>
+          <h2 style="color: #ff5d0d">For Students Section</h2>
+          <h3 style="margin-top: 1.5rem">Why Students Should Attend</h3>
         </div>
         <div class="student-cards-container">
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Network with Entrepreneurs
-                </h3>
-                <p class="student-card-subheading">Build connections with <br>founders, professionals, and
-                    <br>investors.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Gain Insider Knowledge</h3>
-                <p class="student-card-subheading">Explore industry trends, research advancements, <br>and future
-                    opportunities.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Explore Internship
-                    Opportunities</h3>
-                <p class="student-card-subheading">Discover internships at top <br>startups for real-world experience.
-                </p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Seek Funding</h3>
-                <p class="student-card-subheading"> Pitch your projects or <br>research ideas to potential investors.
-                </p>
-            </div>
-        </div>
-        <div class="fsub-heading">
-            <h2 style="color: #ff5d0d;">For Startups Section</h2>
-            <h3 style="margin-top: 1.5rem;">Why Startups Should Join
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Network with Entrepreneurs
             </h3>
-        </div>
-        <div class="student-cards-container">
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Pitch to Investors</h3>
-                <p class="student-card-subheading"> Showcase your venture to a <br>panel of leading investors and VCs.
-                </p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Showcase Ingenuity</h3>
-                <p class="student-card-subheading">Display your cutting-edge <br>solutions to a diverse audience.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Recruit Talented Interns
-                </h3>
-                <p class="student-card-subheading"> Find skilled students to <br>join your growing team.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Refine Your Ideas</h3>
-                <p class="student-card-subheading"> Receive expert <br>feedback to enhance <br>your strategy and
-                    product.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 2.5rem">Get Feedback</h3>
-                <p class="student-card-subheading">Test your products with potential buyers <br>and iterate effectively.
-                </p>
-            </div>
+            <p class="student-card-subheading">
+              Build connections with <br />founders, professionals, and
+              <br />investors.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Gain Insider Knowledge
+            </h3>
+            <p class="student-card-subheading">
+              Explore industry trends, research advancements, <br />and future
+              opportunities.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Explore Internship Opportunities
+            </h3>
+            <p class="student-card-subheading">
+              Discover internships at top <br />startups for real-world
+              experience.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Seek Funding
+            </h3>
+            <p class="student-card-subheading">
+              Pitch your projects or <br />research ideas to potential
+              investors.
+            </p>
+          </div>
         </div>
         <div class="fsub-heading">
-            <h2 style="color: #ff5d0d;">For Investors Section
-            </h2>
-            <h3 style="margin-top: 1.5rem;">Why Investors Should Attend
-            </h3>
+          <h2 style="color: #ff5d0d">For Startups Section</h2>
+          <h3 style="margin-top: 1.5rem">Why Startups Should Join</h3>
         </div>
         <div class="student-cards-container">
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem;">Discover New Ventures</h3>
-                <p class="student-card-subheading"> Explore diverse startups across sectors <br>ready for strategic
-                    investment.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Invest in Promising Startups
-                </h3>
-                <p class="student-card-subheading">Find bootstrapped and seed-funded <br>startups with high growth
-                    potential.</p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Network with Industry
-                    Leaders</h3>
-                <p class="student-card-subheading"> Connect with venture capitalists,<br> founders, and industrialists.
-                </p>
-            </div>
-            <div class="student-card">
-                <h3 class="student-card-heading" style="color: #ff5d0d; margin-top: 1.5rem">Diversify Your Portfolio
-                </h3>
-                <p class="student-card-subheading">Add high-potential startups<br> to strengthen your <br>investment
-                    mix.</p>
-            </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Pitch to Investors
+            </h3>
+            <p class="student-card-subheading">
+              Showcase your venture to a <br />panel of leading investors and
+              VCs.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Showcase Ingenuity
+            </h3>
+            <p class="student-card-subheading">
+              Display your cutting-edge <br />solutions to a diverse audience.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Recruit Talented Interns
+            </h3>
+            <p class="student-card-subheading">
+              Find skilled students to <br />join your growing team.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Refine Your Ideas
+            </h3>
+            <p class="student-card-subheading">
+              Receive expert <br />feedback to enhance <br />your strategy and
+              product.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 2.5rem"
+            >
+              Get Feedback
+            </h3>
+            <p class="student-card-subheading">
+              Test your products with potential buyers <br />and iterate
+              effectively.
+            </p>
+          </div>
         </div>
-    </div>
-    <section id="speakerSection">
-        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw; margin-top: 5vh;">
-            Our Speakers
+        <div class="fsub-heading">
+          <h2 style="color: #ff5d0d">For Investors Section</h2>
+          <h3 style="margin-top: 1.5rem">Why Investors Should Attend</h3>
+        </div>
+        <div class="student-cards-container">
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Discover New Ventures
+            </h3>
+            <p class="student-card-subheading">
+              Explore diverse startups across sectors <br />ready for strategic
+              investment.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Invest in Promising Startups
+            </h3>
+            <p class="student-card-subheading">
+              Find bootstrapped and seed-funded <br />startups with high growth
+              potential.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Network with Industry Leaders
+            </h3>
+            <p class="student-card-subheading">
+              Connect with venture capitalists,<br />
+              founders, and industrialists.
+            </p>
+          </div>
+          <div class="student-card">
+            <h3
+              class="student-card-heading"
+              style="color: #ff5d0d; margin-top: 1.5rem"
+            >
+              Diversify Your Portfolio
+            </h3>
+            <p class="student-card-subheading">
+              Add high-potential startups<br />
+              to strengthen your <br />investment mix.
+            </p>
+          </div>
+        </div>
+      </div>
+      <section id="speakerSection">
+        <h1
+          style="
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 3.7vw;
+            margin-top: 5vh;
+          "
+        >
+          Our Speakers
         </h1>
         <div class="speakerContainer">
-
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/kamlesh4.png" alt="Kamlesh Ghumare" loading="lazy">
+              <div class="flip-card-front">
+                <img
+                  src="img/kamlesh4.png"
+                  alt="Kamlesh Ghumare"
+                  loading="lazy"
+                />
                 <h2>Kamlesh Ghumare</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Kamlesh Ghumare</h2>
                 <h3>Founder & CEO, TechMojo</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/bhavna2.png" alt="Bhavna Bhatnagar" loading="lazy">
+              <div class="flip-card-front">
+                <img
+                  src="img/bhavna2.png"
+                  alt="Bhavna Bhatnagar"
+                  loading="lazy"
+                />
                 <h2>Bhavna Bhatnagar</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Bhavna Bhatnagar</h2>
                 <h3>Founder & CEO, BrandWaale</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/dd.webp" alt="Devendra Deshmukh" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/dd.webp" alt="Devendra Deshmukh" loading="lazy" />
                 <h2>Devendra Deshmukh</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Devendra Deshmukh</h2>
                 <h3>CEO, Venkteshwara Hatcheries</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/dembla.jpg" alt="Rajesh Dembla" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/dembla.jpg" alt="Rajesh Dembla" loading="lazy" />
                 <h2>Rajesh Dembla</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Rajesh Dembla</h2>
                 <h3>Co-Founder & CEO, Cube Wealth</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/goyal.jpeg" alt="Rohit Goyal" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/goyal.jpeg" alt="Rohit Goyal" loading="lazy" />
                 <h2>Rohit Goyal</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Rohit Goyal</h2>
                 <h3>Co-Founder & CEO, GoMechanic</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/adik.jpg" alt="Pravin Adik" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/adik.jpg" alt="Pravin Adik" loading="lazy" />
                 <h2>Pravin Adik</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Pravin Adik</h2>
                 <h3>Angel Investor & Startup Mentor</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/thite.jpeg" alt="Yogesh Thite" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/thite.jpeg" alt="Yogesh Thite" loading="lazy" />
                 <h2>Yogesh Thite</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Yogesh Thite</h2>
                 <h3>Founder, TechYogi Solutions</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/raunak.png" alt="Raunak Singhvi" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/raunak.png" alt="Raunak Singhvi" loading="lazy" />
                 <h2>Raunak Singhvi</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Raunak Singhvi</h2>
                 <h3>Co-Founder, MyCaptain</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/parimal.png" alt="Parimal Kale" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/parimal.png" alt="Parimal Kale" loading="lazy" />
                 <h2>Parimal Kale</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Parimal Kale</h2>
                 <h3>Founder & CEO, ConnectUp</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/default.jpeg" alt="Nikhil Gupta" loading="lazy">
+              <div class="flip-card-front">
+                <img src="img/default.jpeg" alt="Nikhil Gupta" loading="lazy" />
                 <h2>Nikhil Gupta</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Nikhil Gupta</h2>
                 <h3>VP of Engineering, Flipkart</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/defaultFemale.png" alt="Dr. Kavita Rao" loading="lazy">
+              <div class="flip-card-front">
+                <img
+                  src="img/defaultFemale.png"
+                  alt="Dr. Kavita Rao"
+                  loading="lazy"
+                />
                 <h2>Dr. Kavita Rao</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Dr. Kavita Rao</h2>
                 <h3>Research Scientist, IBM</h3>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-            <div class="flip-card">
+          <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="img/default.jpeg" alt="Mangesh Natha Shinde" loading="lazy">
+              <div class="flip-card-front">
+                <img
+                  src="img/default.jpeg"
+                  alt="Mangesh Natha Shinde"
+                  loading="lazy"
+                />
                 <h2>Mangesh Natha Shinde</h2>
-                </div>
-                <div class="flip-card-back">
+              </div>
+              <div class="flip-card-back">
                 <h2>Mangesh Natha Shinde</h2>
                 <h3>CEO, Shinde Group</h3>
-                </div>
+              </div>
             </div>
-            </div>
-
+          </div>
         </div>
-        <br><br><br><br>
-        </section>
+        <br /><br /><br /><br />
+      </section>
 
-    <section id="wadhwanisection" class="Wadhwani">
-        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw;">Wadhwani Foundation</h1>
+      <section id="wadhwanisection" class="Wadhwani">
+        <h1
+          style="
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 3.7vw;
+          "
+        >
+          Wadhwani Foundation
+        </h1>
         <div class="wadhwani-container">
-            <div class="wadhwani-row">
-                <div class="imagew-box">
-                    <img src="./img/wadhwani.png" alt="Wadhwani Foundation" />
-                </div>
-                <div class="wadhwani-box">
-                    <h2>About Wadhwani Foundation</h2>
-                    <p>
-                        The Wadhwani Foundation is a global non-profit organization dedicated to accelerating economic
-                        development in emerging economies through entrepreneurship, innovation, and job creation.
-                        Founded by Dr. Romesh Wadhwani, the foundation focuses on empowering entrepreneurs and
-                        fostering innovation to create sustainable economic growth.
-                    </p>
-                </div>
+          <div class="wadhwani-row">
+            <div class="imagew-box">
+              <img src="./img/wadhwani.png" alt="Wadhwani Foundation" />
             </div>
+            <div class="wadhwani-box">
+              <h2>About Wadhwani Foundation</h2>
+              <p>
+                The Wadhwani Foundation is a global non-profit organization
+                dedicated to accelerating economic development in emerging
+                economies through entrepreneurship, innovation, and job
+                creation. Founded by Dr. Romesh Wadhwani, the foundation focuses
+                on empowering entrepreneurs and fostering innovation to create
+                sustainable economic growth.
+              </p>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id = "partnerSection" class="partners" >
-        <h1 style="text-align: center; font-size: 2.5em; font-weight: 600; margin-bottom: 3.7vw; color: white;">Previous Partners</h1>
+      <section id="partnerSection" class="partners">
+        <h1
+          style="
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 3.7vw;
+            color: white;
+          "
+        >
+          Previous Partners
+        </h1>
         <div id="moving-div">
-            <div id="blurleft"></div>
-            <div class="move">
-                <img src="./img/microsoft-logo.png" alt="Microsoft">
-                <img src="./img/Decathlon-Logo.png" alt="Decathlon">
-                <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox">
-                <img src="./img/campusTimes_logo.jpeg" alt="Campus Times">
-                <img src="./img/iMOCH_logo.png" alt="iMoch">
-            </div>
-            <div class="move">
-                <img src="./img/microsoft-logo.png" alt="Microsoft">
-                <img src="./img/Decathlon-Logo.png" alt="Decathlon">
-                <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox">
-                <img src="./img/campusTimes_logo.jpeg" alt="Campus Times">
-                <img src="./img/iMOCH_logo.png" alt="iMoch">
-            </div>
-            <div id="blurright"></div>
+          <div id="blurleft"></div>
+          <div class="move">
+            <img src="./img/microsoft-logo.png" alt="Microsoft" />
+            <img src="./img/Decathlon-Logo.png" alt="Decathlon" />
+            <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox" />
+            <img src="./img/campusTimes_logo.jpeg" alt="Campus Times" />
+            <img src="./img/iMOCH_logo.png" alt="iMoch" />
+          </div>
+          <div class="move">
+            <img src="./img/microsoft-logo.png" alt="Microsoft" />
+            <img src="./img/Decathlon-Logo.png" alt="Decathlon" />
+            <img src="./img/Artic_Fox_Logo.png" alt="Artic Fox" />
+            <img src="./img/campusTimes_logo.jpeg" alt="Campus Times" />
+            <img src="./img/iMOCH_logo.png" alt="iMoch" />
+          </div>
+          <div id="blurright"></div>
         </div>
-    </section>
+      </section>
 
-    <div id="videoSection">
-        <video src="./img/ecell reel.mp4" autoplay muted loop playsinline></video>
+      <div id="videoSection">
+        <video
+          src="./img/ecell reel.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
         <div class="videoSection-center">
-            <div class="playIcon">
-                <i class="ri-play-fill"></i> </div>
+          <!-- <div class="playIcon"> -->
+            <!-- <i class="ri-play-fill"></i> -->
+          <!-- </div> -->
         </div>
-    </div>
-    <section id="FAQ"> <br> <br>
+      </div>
+      <section id="FAQ">
+        <br />
+        <br />
         <h1>FAQ</h1>
         <div>
-            <details>
-                <summary>
-                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) What happens in the event??</h1>
-                </summary>
+          <details>
+            <summary>
+              <i class="ri-arrow-down-s-line icon"></i>
+              <h1>Q) What happens in the event??</h1>
+            </summary>
 
-                <div class="FAQ-answer">
-                    <div class="FAQ_hoverEffect">
-                    </div>
-                    <p>
-                        Startup Expo 2025 is a major event that typically features a variety of activities aimed at
-                        fostering entrepreneurship, leadership and networking among startups, investors, and industry
-                        professionals.
-                    </p>
-                </div>
-            </details>
+            <div class="FAQ-answer">
+              <div class="FAQ_hoverEffect"></div>
+              <p>
+                Startup Expo 2025 is a major event that typically features a
+                variety of activities aimed at fostering entrepreneurship,
+                leadership and networking among startups, investors, and
+                industry professionals.
+              </p>
+            </div>
+          </details>
         </div>
         <div>
-            <details>
-                <summary>
-                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) When is the Event for this year?? </h1>
-                </summary>
+          <details>
+            <summary>
+              <i class="ri-arrow-down-s-line icon"></i>
+              <h1>Q) When is the Event for this year??</h1>
+            </summary>
 
-                <div class="FAQ-answer">
-                    <div class="FAQ_hoverEffect">
-                    </div>
-                    <p>The Startup Expo 2025 event is scheduled to take place from August 11th to August 14th.</p> </div>
-            </details>
+            <div class="FAQ-answer">
+              <div class="FAQ_hoverEffect"></div>
+              <p>
+                The Startup Expo 2025 event is scheduled to take place from
+                August 11th to August 14th.
+              </p>
+            </div>
+          </details>
         </div>
         <div>
-            <details>
-                <summary>
-                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) What do the attendees get??</h1>
-                </summary>
+          <details>
+            <summary>
+              <i class="ri-arrow-down-s-line icon"></i>
+              <h1>Q) What do the attendees get??</h1>
+            </summary>
 
-                <div class="FAQ-answer">
-                    <div class="FAQ_hoverEffect">
-                    </div>
-                    <p>Attendees of Startup Expo 2025 gain access to valuable networking opportunities, insights from
-                        industry experts, exposure to innovative products and services, potential investment
-                        opportunities, and the chance to participate in workshops, panel discussions, and pitch
-                        sessions.
-                    </p>
-                </div>
-            </details>
+            <div class="FAQ-answer">
+              <div class="FAQ_hoverEffect"></div>
+              <p>
+                Attendees of Startup Expo 2025 gain access to valuable
+                networking opportunities, insights from industry experts,
+                exposure to innovative products and services, potential
+                investment opportunities, and the chance to participate in
+                workshops, panel discussions, and pitch sessions.
+              </p>
+            </div>
+          </details>
         </div>
         <div>
-            <details>
-                <summary>
-                    <i class="ri-arrow-down-s-line icon"></i> <h1>Q) Is there any Registration Fees??</h1>
-                </summary>
+          <details>
+            <summary>
+              <i class="ri-arrow-down-s-line icon"></i>
+              <h1>Q) Is there any Registration Fees??</h1>
+            </summary>
 
-                <div class="FAQ-answer">
-                    <div class="FAQ_hoverEffect">
-                    </div>
-                    <p>No, there is no registration fee for attending Startup Expo 2025.</p>
-                </div>
-            </details>
+            <div class="FAQ-answer">
+              <div class="FAQ_hoverEffect"></div>
+              <p>
+                No, there is no registration fee for attending Startup Expo
+                2025.
+              </p>
+            </div>
+          </details>
         </div>
 
         <div class="moreQuestions">
-            <h1>Have More Questions?</h1><br>
-            <p>Have a question or need assistance? We are here to help. Reach out to us via email or give us a call</p>
-
+          <h1>Have More Questions?</h1>
+          <br />
+          <p>
+            Have a question or need assistance? We are here to help. Reach out
+            to us via email or give us a call
+          </p>
         </div>
-
-    </section>
-    <section class="form-container" id="contact">
+      </section>
+      <section class="form-container" id="contact">
         <div class="form-row">
-
-            <div class="formCol leftForm">
-                <div class="contactTitle">
-                    <h2>Get In Touch</h2>
-                    <p>Feel free to reach out to us with any inquiries or collaboration opportunities regarding our
-                        StartupExpo 2025</p>
-                </div>
+          <div class="formCol leftForm">
+            <div class="contactTitle">
+              <h2>Get In Touch</h2>
+              <p>
+                Feel free to reach out to us with any inquiries or collaboration
+                opportunities regarding our StartupExpo 2025
+              </p>
             </div>
+          </div>
 
-            <div class="formCol rightForm">
-                <form action="https://formspree.io/f/xyzgdygk" method="POST" class="messageForm">
-                    <div class="inputGroup halfWidth">
-                        <input class="name" type="text" name="name" required="required"> <label>Your Name</label>
-                    </div>
+          <div class="formCol rightForm">
+            <form
+              action="https://formspree.io/f/xyzgdygk"
+              method="post"
+              class="messageForm"
+            >
+              <div class="inputGroup halfWidth">
+                <input
+                  class="name"
+                  type="text"
+                  name="name"
+                  required="required"
+                />
+                <label>Your Name</label>
+              </div>
 
-                    <div class="inputGroup halfWidth">
-                        <input type="email" name="email" required="required">
-                        <label>Email</label>
-                    </div>
+              <div class="inputGroup halfWidth">
+                <input type="email" name="email" required="required" />
+                <label>Email</label>
+              </div>
 
-                    <div class="inputGroup fullWidth">
-                        <input type="text" name="subject" required="required"> <label>Subject</label>
-                    </div>
+              <div class="inputGroup fullWidth">
+                <input type="text" name="subject" required="required" />
+                <label>Subject</label>
+              </div>
 
-                    <div class="inputGroup fullWidth">
-                        <textarea name="message" required="required"></textarea> <label>Say Something</label>
-                    </div>
+              <div class="inputGroup fullWidth">
+                <textarea name="message" required="required"></textarea>
+                <label>Say Something</label>
+              </div>
 
-                    <div class="inputGroup fullWidth">
-                        <button type="submit">Send Message</button> </div>
-                </form>
-            </div>
-
+              <div class="inputGroup fullWidth">
+                <button type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <footer>
+      <footer>
         <div class="footer-upper">
-            <img src="./img/ECELL-LOGO.png" alt="E-Cell Logo">
-            <div class="footer-part">
-                <h3>Location<div class="underline"><span></span></div>
-                </h3>
-                <p>MIT World Peace University</p>
-                <p>Paud Rd, Kothrud, Pune</p>
-                <p>Maharashtra 411038</p>
-                <p class="email-id">startupexpo@mitwpu.edu.in</p>
-                <h4>+91-7756973005</h4>
+          <img src="./img/ECELL-LOGO.png" alt="E-Cell Logo" />
+          <div class="footer-part">
+            <h3>
+              Location
+              <div class="underline"><span></span></div>
+            </h3>
+            <p>MIT World Peace University</p>
+            <p>Paud Rd, Kothrud, Pune</p>
+            <p>Maharashtra 411038</p>
+            <p class="email-id">startupexpo@mitwpu.edu.in</p>
+            <h4>+91-7756973005</h4>
+          </div>
+          <div class="footer-part">
+            <h3>
+              Links
+              <div class="underline"><span></span></div>
+            </h3>
+            <p><a href="#featured">Highlights</a></p>
+            <p><a href="./expo25.html">Expo-2025</a></p>
+            <p><a href="#speakerSection">Speakers</a></p>
+            <p><a href="#FAQ">FAQ'S</a></p>
+            <p><a href="#contact">Contact</a></p>
+          </div>
+          <div class="footer-part4">
+            <h3>
+              Follow us
+              <div class="underline"><span></span></div>
+            </h3>
+            <div class="socialMedia">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a
+                href="https://www.instagram.com/startupexpo.mitwpu?igsh=aThmeHQ3MXpzMm50"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/startup-expo-mit-wpu/"
+                target="_blank"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
             </div>
-            <div class="footer-part">
-                <h3>Links<div class="underline"><span></span></div>
-                </h3>
-                <p><a href="#featured">Highlights</a></p>
-                <p><a href="./expo25.html">Expo-2025</a></p>
-                <p><a href="#speakerSection">Speakers</a></p>
-                <p><a href="#FAQ">FAQ'S</a></p>
-                <p><a href="#contact">Contact</a></p>
-            </div>
-            <div class="footer-part4">
-                <h3>Follow us <div class="underline"><span></span></div>
-                </h3>
-                <div class="socialMedia">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/startupexpo.mitwpu?igsh=aThmeHQ3MXpzMm50" target="_blank"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/startup-expo-mit-wpu/" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+          </div>
         </div>
-        <p>E-Cell StartupExpo © 2025 - All Rights Reserved </p><br>
-    </footer>
-</div>
-  <script src="./app.js"></script>
-  <!-- Shery.js CDN -->
-<script src="https://unpkg.com/sheryjs@1.0.0-beta.1/dist/Shery.min.js"></script>
+        <p>E-Cell StartupExpo © 2025 - All Rights Reserved</p>
+        <br />
+      </footer>
+    </div>
+    <script src="./app.js"></script>
+    <!-- Shery.js CDN -->
+    <script src="https://unpkg.com/sheryjs@1.0.0-beta.1/dist/Shery.min.js"></script>
 
     <script>
-        document.querySelectorAll("details").forEach((detail) => {
-            const summary = detail.querySelector("summary");
-            summary.addEventListener("click", (e) => {
-                e.preventDefault();
-                if (detail.hasAttribute("open")) {
-                    detail.classList.remove("animating");
-                    detail.removeAttribute("open");
-                } else {
-                    document.querySelectorAll("details[open]").forEach((el) => {
-                        el.removeAttribute("open");
-                    });
-                    detail.setAttribute("open", true);
-                    detail.classList.add("animating");
-                    setTimeout(() => detail.classList.remove("animating"), 500);
-                }
+      document.querySelectorAll("details").forEach((detail) => {
+        const summary = detail.querySelector("summary");
+        summary.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (detail.hasAttribute("open")) {
+            detail.classList.remove("animating");
+            detail.removeAttribute("open");
+          } else {
+            document.querySelectorAll("details[open]").forEach((el) => {
+              el.removeAttribute("open");
             });
+            detail.setAttribute("open", true);
+            detail.classList.add("animating");
+            setTimeout(() => detail.classList.remove("animating"), 500);
+          }
         });
+      });
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    window.addEventListener("scroll", () => {
-      console.log("ScrollY:", window.scrollY);
-    });
-  });
+      document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("scroll", () => {
+          console.log("ScrollY:", window.scrollY);
+        });
+      });
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script> 
-    
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/sheryjs/dist/Shery.js"
+    ></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        let scene, camera, renderer, stars, starGeo;
-        let animationFrameId; // To store the requestAnimationFrame ID
+      let scene, camera, renderer, stars, starGeo;
+      let animationFrameId; // To store the requestAnimationFrame ID
 
-        // --- DOM Elements ---
-        const introAnimation = document.getElementById("introAnimation");
-        const surpriseBox = document.getElementById("surpriseBox");
-        const cosmicCanvas = document.getElementById("cosmicCanvas");
-        const mainContent = document.getElementById("mainContent");
+      // --- DOM Elements ---
+      const introAnimation = document.getElementById("introAnimation");
+      const surpriseBox = document.getElementById("surpriseBox");
+      const cosmicCanvas = document.getElementById("cosmicCanvas");
+      const mainContent = document.getElementById("mainContent");
 
-        // --- Animation Sequence Control ---
-        function startIntroAnimation() {
+      // --- Animation Sequence Control ---
+      function startIntroAnimation() {
         // Stage 1: Surprise Box Appears (it's visible by default)
         // Add a slight delay before the burst for the user to see the box
         setTimeout(() => {
-            // Stage 2: Surprise Box Burst
-            surpriseBox.classList.add("burst");
+          // Stage 2: Surprise Box Burst
+          surpriseBox.classList.add("burst");
 
-            setTimeout(() => {
+          setTimeout(() => {
             surpriseBox.style.display = "none"; // Hide the box completely
             cosmicCanvas.classList.add("active"); // Show and fade in cosmic canvas
             initCosmicAnimation(); // Start the Three.js animation
-            }, 900); // Wait for burst animation (0.8s) + a small buffer
+          }, 900); // Wait for burst animation (0.8s) + a small buffer
         }, 1000); // Wait 1 second before bursting the box
-        }
+      }
 
-        function finishIntroAnimation() {
+      function finishIntroAnimation() {
         // Stop Three.js animation
         if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
+          cancelAnimationFrame(animationFrameId);
         }
         // Fade out intro animation container
         introAnimation.style.opacity = "0";
@@ -735,35 +955,38 @@
 
         // Remove intro animation container after it fades out
         setTimeout(() => {
-            introAnimation.remove();
+          introAnimation.remove();
         }, 1500); // Matches introAnimation fade-out duration
-        }
+      }
 
-        // --- Three.js Cosmic Animation ---
-        function initCosmicAnimation() {
+      // --- Three.js Cosmic Animation ---
+      function initCosmicAnimation() {
         // Scene
         scene = new THREE.Scene();
 
         // Camera
         camera = new THREE.PerspectiveCamera(
-            60,
-            window.innerWidth / window.innerHeight,
-            1,
-            1000
+          60,
+          window.innerWidth / window.innerHeight,
+          1,
+          1000
         );
         camera.position.z = 1; // Start close to the stars
         camera.rotation.x = Math.PI / 2; // Look "forward" in the starfield
 
         // Renderer
-        renderer = new THREE.WebGLRenderer({ canvas: cosmicCanvas, antialias: true });
+        renderer = new THREE.WebGLRenderer({
+          canvas: cosmicCanvas,
+          antialias: true,
+        });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x000000, 1); // Black background
 
         // Resize handler for Three.js
         window.addEventListener("resize", () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
         });
 
         // Stars
@@ -773,31 +996,34 @@
         const numStars = 6000; // More stars for a denser field
 
         for (let i = 0; i < numStars; i++) {
-            // Random positions in a sphere-like volume
-            positions.push(
+          // Random positions in a sphere-like volume
+          positions.push(
             Math.random() * 600 - 300, // x
             Math.random() * 600 - 300, // y
             Math.random() * 600 - 300 // z
-            );
-            // Random colors for stars (subtle variations)
-            colors.push(
+          );
+          // Random colors for stars (subtle variations)
+          colors.push(
             Math.random() * 0.5 + 0.5, // R
             Math.random() * 0.5 + 0.5, // G
             Math.random() * 0.5 + 0.5 // B
-            );
+          );
         }
         starGeo.setAttribute(
-            "position",
-            new THREE.Float32BufferAttribute(positions, 3)
+          "position",
+          new THREE.Float32BufferAttribute(positions, 3)
         );
-        starGeo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+        starGeo.setAttribute(
+          "color",
+          new THREE.Float32BufferAttribute(colors, 3)
+        );
 
         const starMaterial = new THREE.PointsMaterial({
-            size: 0.8, // Size of each star
-            vertexColors: true, // Use colors from BufferGeometry
-            transparent: true,
-            opacity: 0.9,
-            blending: THREE.AdditiveBlending, // For glowing effect
+          size: 0.8, // Size of each star
+          vertexColors: true, // Use colors from BufferGeometry
+          transparent: true,
+          opacity: 0.9,
+          blending: THREE.AdditiveBlending, // For glowing effect
         });
 
         stars = new THREE.Points(starGeo, starMaterial);
@@ -807,170 +1033,183 @@
         let speed = 0.5; // Initial speed
         const maxSpeed = 3; // Max warp speed
         const acceleration = 0.02; // How fast speed increases
-        const animationDuration =2000; // Total duration of cosmic animation in ms
+        const animationDuration = 2000; // Total duration of cosmic animation in ms
         const startTime = Date.now();
 
         function animateCosmicTravel() {
-            const currentTime = Date.now();
-            const elapsedTime = currentTime - startTime;
+          const currentTime = Date.now();
+          const elapsedTime = currentTime - startTime;
 
-            // Accelerate camera
-            if (speed < maxSpeed) {
+          // Accelerate camera
+          if (speed < maxSpeed) {
             speed += acceleration;
-            }
+          }
 
-            // Move stars forward
-            stars.rotation.y += 0.0005; // Gentle rotation
-            stars.position.z += speed; // Move camera forward
+          // Move stars forward
+          stars.rotation.y += 0.0005; // Gentle rotation
+          stars.position.z += speed; // Move camera forward
 
-            // Reset stars if they go too far back
-            if (stars.position.z > 200) {
+          // Reset stars if they go too far back
+          if (stars.position.z > 200) {
             // If stars pass a certain point
             stars.position.z -= 400; // Move them back
-            }
+          }
 
-            renderer.render(scene, camera);
-            animationFrameId = requestAnimationFrame(animateCosmicTravel);
+          renderer.render(scene, camera);
+          animationFrameId = requestAnimationFrame(animateCosmicTravel);
 
-            // End animation after duration
-            if (elapsedTime > animationDuration) {
+          // End animation after duration
+          if (elapsedTime > animationDuration) {
             finishIntroAnimation();
-            }
+          }
         }
         animateCosmicTravel();
-        }
+      }
 
-        // --- Original Landing Page Scroll Animations (retained) ---
-        const observerOptions = {
+      // --- Original Landing Page Scroll Animations (retained) ---
+      const observerOptions = {
         root: null,
         rootMargin: "0px",
         threshold: 0.1,
-        };
+      };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+          if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
             observer.unobserve(entry.target);
-            }
+          }
         });
-        }, observerOptions);
+      }, observerOptions);
 
-        // Observe elements after main content is visible
-        function setupScrollAnimations() {
+      // Observe elements after main content is visible
+      function setupScrollAnimations() {
         document.querySelectorAll(".section-animation").forEach((section) => {
-            observer.observe(section);
+          observer.observe(section);
         });
-        }
+      }
 
-        // --- Interactive Nexus Core Effect (retained) ---
-        const nexusCore = document.getElementById("nexusCore");
-        const nexusRipple = document.getElementById("nexusRipple");
+      // --- Interactive Nexus Core Effect (retained) ---
+      const nexusCore = document.getElementById("nexusCore");
+      const nexusRipple = document.getElementById("nexusRipple");
 
-        nexusCore.addEventListener("click", () => {
+      nexusCore.addEventListener("click", () => {
         nexusRipple.classList.remove("opacity-100", "scale-100");
         nexusRipple.classList.add("opacity-0", "scale-0");
         void nexusRipple.offsetWidth; // Trigger reflow
         nexusRipple.classList.remove("opacity-0", "scale-0");
         nexusRipple.classList.add("opacity-100", "scale-100");
-        });
+      });
 
-        // Parallax effect for nexus core
-        document.addEventListener("mousemove", (e) => {
+      // Parallax effect for nexus core
+      document.addEventListener("mousemove", (e) => {
         // Only apply if main content is visible
-        if (mainContent.style.visibility === "visible") { // Check visibility
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
+        if (mainContent.style.visibility === "visible") {
+          // Check visibility
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
 
-            const moveX = (mouseX - centerX) * 0.02;
-            const moveY = (mouseY - centerY) * 0.02;
+          const moveX = (mouseX - centerX) * 0.02;
+          const moveY = (mouseY - centerY) * 0.02;
 
-            nexusCore.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
+          nexusCore.style.transform = `translate(${moveX}px, ${moveY}px) scale(1)`;
         }
-        });
+      });
 
-        document.addEventListener("mouseleave", () => {
-        if (mainContent.style.visibility === "visible") { // Check visibility
-            nexusCore.style.transform = `translate(0px, 0px) scale(1)`;
+      document.addEventListener("mouseleave", () => {
+        if (mainContent.style.visibility === "visible") {
+          // Check visibility
+          nexusCore.style.transform = `translate(0px, 0px) scale(1)`;
         }
-        });
+      });
 
-        // --- Initial Load ---
-        window.onload = function () {
-            startIntroAnimation();
-            // No need for setTimeout here, setupScrollAnimations will be called after intro animation finishes
-        };
-
+      // --- Initial Load ---
+      window.onload = function () {
+        startIntroAnimation();
+        // No need for setTimeout here, setupScrollAnimations will be called after intro animation finishes
+      };
     </script>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(ScrollTrigger);
 
-        gsap.from(".about-box", {
-            scrollTrigger: {
-                trigger: "#aboutSection",
-                start: "top 80%",
-            },
-            opacity: 0,
-            y: 40,
-            duration: 1,
-            ease: "power2.out",
-            stagger: 0.2,
-        });
+      gsap.from(".about-box", {
+        scrollTrigger: {
+          trigger: "#aboutSection",
+          start: "top 80%",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.2,
+      });
     </script>
     <script>
-        const detailsElements = document.querySelectorAll("details");
+      const detailsElements = document.querySelectorAll("details");
 
-        detailsElements.forEach((detail) => {
-            detail.addEventListener("toggle", function () {
-                // Rotate icon on toggle
-                const icon = this.querySelector("i.icon");
-                if (icon) { // Check if icon exists
-                    if (this.open) {
-                        icon.style.transform = "rotate(180deg)";
-                    } else {
-                        icon.style.transform = "rotate(0deg)";
-                    }
-                }
-
-                // Close other open details
-                detailsElements.forEach((other) => {
-                    if (other !== this && other.open) {
-                        other.open = false;
-                        const otherIcon = other.querySelector("i.icon");
-                        if (otherIcon) { // Check if icon exists for other details
-                            otherIcon.style.transform = "rotate(0deg)";
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script>
-        const countdownDate = new Date("August 11, 2025 00:00:00").getTime();
-
-        const countdownFunction = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "<p>We're Live!</p>";
-                return;
+      detailsElements.forEach((detail) => {
+        detail.addEventListener("toggle", function () {
+          // Rotate icon on toggle
+          const icon = this.querySelector("i.icon");
+          if (icon) {
+            // Check if icon exists
+            if (this.open) {
+              icon.style.transform = "rotate(180deg)";
+            } else {
+              icon.style.transform = "rotate(0deg)";
             }
+          }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          // Close other open details
+          detailsElements.forEach((other) => {
+            if (other !== this && other.open) {
+              other.open = false;
+              const otherIcon = other.querySelector("i.icon");
+              if (otherIcon) {
+                // Check if icon exists for other details
+                otherIcon.style.transform = "rotate(0deg)";
+              }
+            }
+          });
+        });
+      });
+    </script>
 
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-        }, 1000);
+    <script>
+      const countdownDate = new Date("August 11, 2025 00:00:00").getTime();
+
+      const countdownFunction = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        if (distance < 0) {
+          clearInterval(countdownFunction);
+          document.getElementById("countdown").innerHTML = "<p>We're Live!</p>";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").innerText = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").innerText = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").innerText = seconds
+          .toString()
+          .padStart(2, "0");
+      }, 1000);
     </script>
 
     <!-- <script>
@@ -990,20 +1229,19 @@ document.getElementById('prev').onclick = () => {
     </script> -->
 
     <script>
-    const list = document.querySelector('.list');
-    const items = document.querySelectorAll('.item');
-    let currentIndex = 0;
+      const list = document.querySelector(".list");
+      const items = document.querySelectorAll(".item");
+      let currentIndex = 0;
 
-    document.getElementById('next').onclick = () => {
+      document.getElementById("next").onclick = () => {
         currentIndex = (currentIndex + 1) % items.length;
         list.style.transform = `translateX(-${currentIndex * 100}%)`;
-    };
+      };
 
-    document.getElementById('prev').onclick = () => {
+      document.getElementById("prev").onclick = () => {
         currentIndex = (currentIndex - 1 + items.length) % items.length;
         list.style.transform = `translateX(-${currentIndex * 100}%)`;
-    };
-</script>
-
-</body>
+      };
+    </script>
+  </body>
 </html>
