@@ -974,9 +974,20 @@ nav {
 h2 {
   font-family: "aktiv-grotesk", sans-serif; /* Sets the font to 'aktiv-grotesk', which you've linked via Typekit. If this fails, it falls back to a generic sans-serif. */
   font-weight: 700; /* Makes the text bold. */
-  font-size: 3em; /* Sets the text size. '3em' means 3 times the base font size (usually 16px, so around 48px). */
+  font-size: 3.5 rem; /* Sets the text size. '3em' means 3 times the base font size (usually 16px, so around 48px). */
   text-align: center; /* Centers the text horizontally within its container. */
-  color: #f0f0f0; /* Sets the text color to a very light grey, which contrasts well with your dark background. */
+  color: #ff5d0d; /* Sets the text color to a very light grey, which contrasts well with your dark background. */
+  margin-bottom: 60px; /* Adds 60 pixels of space below the heading, separating it from the content below. */
+  position: relative; /* Essential for positioning the '::after' pseudo-element relative to this heading. */
+  padding-bottom: 15px; /* Adds space between the text and the bottom border/underline. */
+}
+
+#event-heading{
+    font-family: "aktiv-grotesk", sans-serif; /* Sets the font to 'aktiv-grotesk', which you've linked via Typekit. If this fails, it falls back to a generic sans-serif. */
+  font-weight: 700; /* Makes the text bold. */
+  font-size: 3.5rem; /* Sets the text size. '3em' means 3 times the base font size (usually 16px, so around 48px). */
+  text-align: center; /* Centers the text horizontally within its container. */
+  color: #ff5d0d; /* Sets the text color to a very light grey, which contrasts well with your dark background. */
   margin-bottom: 60px; /* Adds 60 pixels of space below the heading, separating it from the content below. */
   position: relative; /* Essential for positioning the '::after' pseudo-element relative to this heading. */
   padding-bottom: 15px; /* Adds space between the text and the bottom border/underline. */
